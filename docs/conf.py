@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'VibPy'
+project = 'Bearing Vibration Diagnostics Toolbox'
 copyright = '2019, Andreas Klausen'
 author = 'Andreas Klausen'
 
