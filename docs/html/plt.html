@@ -1,0 +1,876 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Plotting funtions &#8212; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Diagnose functions" href="diagnose.html" />
+    <link rel="prev" title="Bearing functions" href="bearing.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="diagnose.html" title="Diagnose functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bearing.html" title="Bearing functions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pyvib.plt">
+<span id="plotting-funtions"></span><h1>Plotting funtions<a class="headerlink" href="#module-pyvib.plt" title="Permalink to this headline">¶</a></h1>
+<p>plt.py</p>
+<dl class="class">
+<dt id="pyvib.plt.PlotUpdater">
+<em class="property">class </em><code class="descclassname">pyvib.plt.</code><code class="descname">PlotUpdater</code><span class="sig-paren">(</span><em>fig</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.PlotUpdater" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add dynamic switching of graphs by changing data
+Hold shift and:
+- right: increase index
+- left: decrease index
+- up: last index
+- down: first index</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fig</strong> (<em>plt figure</em>) – Figure</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pyvib.plt.PlotUpdater.addLine">
+<code class="descname">addLine</code><span class="sig-paren">(</span><em>line</em>, <em>ax</em>, <em>lineData</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.PlotUpdater.addLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a line to the figure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>line</strong> (<em>plt line pbject</em>) – The line object to add</li>
+<li><strong>ax</strong> (<em>axis</em>) – Axis object the line belongs to</li>
+<li><strong>lineData</strong> (<em>dictionary</em><em> or </em><em>list of dictionaries</em>) – Dictionary must contain ‘x’ for x-data and
+‘y’ for y-data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.alignYLabels">
+<code class="descclassname">pyvib.plt.</code><code class="descname">alignYLabels</code><span class="sig-paren">(</span><em>fig</em>, <em>axes</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.alignYLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align y labels to a single line for the axes
+The left-most positioned label is used</p>
+<p>Parameters
+fig : figure</p>
+<blockquote>
+<div>Figure which axes are on</div></blockquote>
+<dl class="docutils">
+<dt>axes <span class="classifier-delimiter">:</span> <span class="classifier">list of axes</span></dt>
+<dd>Axes to align</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.arrow">
+<code class="descclassname">pyvib.plt.</code><code class="descname">arrow</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>angle</em>, <em>length</em>, <em>fig</em>, <em>ax</em>, <em>fs=None</em>, <em>slack=2.0</em>, <em>adjText=(0.0</em>, <em>0.0)</em>, <em>label=None</em>, <em>scale=0.7</em>, <em>hideArrow=False</em>, <em>marker=False</em>, <em>markerSize=2.0</em>, <em>markerColor='r'</em>, <em>markerLabel='_'</em>, <em>markerType='.'</em>, <em>textbbox=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.arrow" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Makes an arrow in an axis based on a point, length and angle</div></blockquote>
+<dl class="docutils">
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>x-axis point the arrow hits</dd>
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>y-axis point the arrow hits</dd>
+<dt>angle <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Angle of the arrow from horizontal. &lt;0 - 360&gt;</dd>
+<dt>length <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Length of the arrow</dd>
+<dt>fig <span class="classifier-delimiter">:</span> <span class="classifier">figure object</span></dt>
+<dd>Figure to plot on</dd>
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to plot arrow on</dd>
+<dt>fs <span class="classifier-delimiter">:</span> <span class="classifier">font size, optional</span></dt>
+<dd>Font size of a label</dd>
+<dt>slack <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Slack between arrowhead and the desired point</dd>
+<dt>adjText <span class="classifier-delimiter">:</span> <span class="classifier">tupple of floats, optional</span></dt>
+<dd>Allows for adjusting the text if crashing with arrow</dd>
+<dt>label <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Label to add at start of arrow
+Use None if no label should be added</dd>
+<dt>scale <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Scale size of arrow</dd>
+<dt>hideArrow <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd>Whether arrow should be hidden</dd>
+<dt>marker <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd>Whether a marker should be shown at the point</dd>
+<dt>markerSize <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Size of the added marker</dd>
+<dt>markerColor <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Color of the marker
+Example ‘r’</dd>
+<dt>markerLabel <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Label of the marker, for legends</dd>
+<dt>markerType <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Type of marker to use</dd>
+<dt>textbbow <span class="classifier-delimiter">:</span> <span class="classifier">bbox</span></dt>
+<dd>Text bounding box
+e.g. bboxMe = {‘facecolor’:’white’, ‘edgecolor’:’white’, ‘zorder’:-100, ‘pad’:0}</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.arrowxy">
+<code class="descclassname">pyvib.plt.</code><code class="descname">arrowxy</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>fig</em>, <em>ax</em>, <em>fs=8.0</em>, <em>slack=2.0</em>, <em>adjText=(0.0</em>, <em>0.0)</em>, <em>label=None</em>, <em>scale=0.7</em>, <em>hideArrow=False</em>, <em>marker=False</em>, <em>markerSize=2.0</em>, <em>markerColor='r'</em>, <em>markerLabel='_'</em>, <em>markerType='.'</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.arrowxy" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Makes an arrow in an axis based on endpoints</div></blockquote>
+<dl class="docutils">
+<dt>x1 <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>x-axis point the arrow hits</dd>
+<dt>y1 <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>y-axis point the arrow hits</dd>
+<dt>x2: float</dt>
+<dd>x-axis point of tail</dd>
+<dt>y2 <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>y-axis point of tail</dd>
+<dt>fig <span class="classifier-delimiter">:</span> <span class="classifier">figure object</span></dt>
+<dd>Figure to plot on</dd>
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to plot arrow on</dd>
+<dt>fs <span class="classifier-delimiter">:</span> <span class="classifier">font size, optional</span></dt>
+<dd>Font size of a label</dd>
+<dt>slack <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Slack between arrowhead and the desired point</dd>
+<dt>adjText <span class="classifier-delimiter">:</span> <span class="classifier">tupple of floats, optional</span></dt>
+<dd>Allows for adjusting the text if crashing with arrow</dd>
+<dt>label <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Label to add at start of arrow
+Use None if no label should be added</dd>
+<dt>scale <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Scale size of arrow</dd>
+<dt>hideArrow <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd>Whether arrow should be hidden</dd>
+<dt>marker <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd>Whether a marker should be shown at the point</dd>
+<dt>markerSize <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Size of the added marker</dd>
+<dt>markerColor <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Color of the marker
+Example ‘r’</dd>
+<dt>markerLabel <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Label of the marker, for legends</dd>
+<dt>markerType <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Type of marker to use</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.decimatedplot">
+<code class="descclassname">pyvib.plt.</code><code class="descname">decimatedplot</code><span class="sig-paren">(</span><em>t</em>, <em>vib</em>, <em>p</em>, <em>ax</em>, <em>direct=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.decimatedplot" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Plot a decimated version where peaks are intact</div></blockquote>
+<dl class="docutils">
+<dt>t <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Time signal</dd>
+<dt>vib <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Signal</dd>
+<dt>p <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Number of points to keep (roughly)</dd>
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis</span></dt>
+<dd>Axis to plot on</dd>
+<dt>direct <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>If direct decimation should be performed instead of
+preserving peaks</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.doublearrow">
+<code class="descclassname">pyvib.plt.</code><code class="descname">doublearrow</code><span class="sig-paren">(</span><em>x1</em>, <em>x2</em>, <em>y</em>, <em>fig</em>, <em>ax</em>, <em>fs=8.0</em>, <em>slack=2.0</em>, <em>adjText=(0.0</em>, <em>0.0)</em>, <em>label=None</em>, <em>scale=0.7</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.doublearrow" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Make a double-ended horizontal arrow</div></blockquote>
+<dl class="docutils">
+<dt>x1 <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>x-axis point 1</dd>
+<dt>x2 <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>x-axis point 2</dd>
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>y-axis height</dd>
+<dt>fig <span class="classifier-delimiter">:</span> <span class="classifier">figure object</span></dt>
+<dd>Figure to plot on</dd>
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to plot on</dd>
+<dt>fs <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Fontsize of label</dd>
+<dt>slack <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Slack between points and arrow head</dd>
+<dt>adjText <span class="classifier-delimiter">:</span> <span class="classifier">tupple of floats, optional</span></dt>
+<dd>Adjust text if it crashes with arrow</dd>
+<dt>label <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>Label over the arrow
+Use None for none</dd>
+<dt>scale <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first">Scale of the arrow</p>
+<p class="last">None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.figure">
+<code class="descclassname">pyvib.plt.</code><code class="descname">figure</code><span class="sig-paren">(</span><em>nh</em>, <em>nw</em>, <em>width=238.0</em>, <em>height=133.0</em>, <em>axesLoc=None</em>, <em>sharex=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.figure" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Makes a new figure with custom columns and rows, and custom size</div></blockquote>
+<dl class="docutils">
+<dt>nh <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Number of ax rows</dd>
+<dt>nw <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Number of ax columns</dd>
+<dt>width <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Width of figure in pixels</dd>
+<dt>height <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Height of figure in pixels</dd>
+<dt>axesLoc <span class="classifier-delimiter">:</span> <span class="classifier">tupple of tupples</span></dt>
+<dd><p class="first">Wrapper for complete custom axes placement and sizes.
+Each element in the first tupple should contain (position y, position x, size in y, size in x)
+Best explained with an example:</p>
+<ul class="simple">
+<li>axesLoc = ( (1,1,1,2), (2,1,1,2), (1,3,1,1), (2,3,1,1) )</li>
+</ul>
+<p class="last">fig : figure object
+Reference to the figure</p>
+</dd>
+<dt>axes <span class="classifier-delimiter">:</span> <span class="classifier">axes objects in 1D array</span></dt>
+<dd>All axes in a row-major configuration</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.filterbankvisualization">
+<code class="descclassname">pyvib.plt.</code><code class="descname">filterbankvisualization</code><span class="sig-paren">(</span><em>filters</em>, <em>level</em>, <em>ymax=1.03</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.filterbankvisualization" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Visualizes the effect of filters in a filterbank.</div></blockquote>
+<p>Can also be used to see the frequency response of a single filter</p>
+<blockquote>
+<div></div></blockquote>
+<dl class="docutils">
+<dt>filters <span class="classifier-delimiter">:</span> <span class="classifier">list of 1D arrays</span></dt>
+<dd>List of filter kernels</dd>
+<dt>level <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>The filterbank level. 0 means one filtering process</dd>
+<dt>ymax <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first">The maximum y-axis value for plot. Use None to see all.</p>
+<p class="last">fig : figure object
+The figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.get_allLinesAndLabels">
+<code class="descclassname">pyvib.plt.</code><code class="descname">get_allLinesAndLabels</code><span class="sig-paren">(</span><em>axes</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.get_allLinesAndLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all lines and labels in a list of axes</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>axes</strong> (<em>list of axis</em>) – Axes to get lines and labels from</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><strong>lines</strong> (<em>list of line</em>) – Identified lines</li>
+<li><strong>labels</strong> (<em>list of label</em>) – Line labels</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.get_decimatedplotvalues">
+<code class="descclassname">pyvib.plt.</code><code class="descname">get_decimatedplotvalues</code><span class="sig-paren">(</span><em>t</em>, <em>vib</em>, <em>r=None</em>, <em>p=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.get_decimatedplotvalues" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Get a decimated version of the input signal where peaks are visibly intact</div></blockquote>
+<dl class="docutils">
+<dt>t <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Time signal</dd>
+<dt>vib <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Signal</dd>
+<dt>r <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd>Denominator of fraction to use. Larger than 1
+Either r or p must be supplied</dd>
+<dt>p <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first">Number of points to keep
+Either r or p must be supplied</p>
+<p class="last">tdec : float 1D array
+Decimated time signal</p>
+</dd>
+<dt>vibdec <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Decimated signal</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.get_xy">
+<code class="descclassname">pyvib.plt.</code><code class="descname">get_xy</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>line</em>, <em>ax</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.get_xy" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Get actual point of a line close to input point</div></blockquote>
+<dl class="docutils">
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>x-axis point close to desired point</dd>
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>y-axis point close to desired point</dd>
+<dt>line <span class="classifier-delimiter">:</span> <span class="classifier">line object</span></dt>
+<dd>The line to search on
+Get from   line, = ax.plot()</dd>
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to look on</dd>
+<dt>xd <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Closest x-point</dd>
+<dt>yd <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Closest y-point</dd>
+<dt>I <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Data index of this point</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="pyvib.plt.get_xydata">
+<em class="property">class </em><code class="descclassname">pyvib.plt.</code><code class="descname">get_xydata</code><span class="sig-paren">(</span><em>fig</em>, <em>ax</em>, <em>line</em>, <em>snap=True</em>, <em>label=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.get_xydata" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Get closest point on graph by clicking on the figure</p>
+<p>fig : figure object
+Figure to listen on</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to get values from</dd>
+<dt>line <span class="classifier-delimiter">:</span> <span class="classifier">line object</span></dt>
+<dd>Line to snap on</dd>
+<dt>snap <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd>Whether closest point on line should be returned</dd>
+<dt>label: string, optional</dt>
+<dd><p class="first">For figures with multiple axes, the label can help distinguish them.</p>
+<p class="last">None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.plotbearingfaults">
+<code class="descclassname">pyvib.plt.</code><code class="descname">plotbearingfaults</code><span class="sig-paren">(</span><em>Y, df, X, bearing, maintitle='', harmonics=[8, 8, 8, 8], subbands=2</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.plotbearingfaults" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Plots a 2x2 subplot figure of the same spectrum, but with harmonic lines</div></blockquote>
+<p>and side-bands for each fault type</p>
+<blockquote>
+<div></div></blockquote>
+<dl class="docutils">
+<dt>Y <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Spectrum to plot</dd>
+<dt>df <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Delta frequency in Hz</dd>
+<dt>X <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Shaft speed in Hz</dd>
+<dt>bearing <span class="classifier-delimiter">:</span> <span class="classifier">float array_like</span></dt>
+<dd>Characteristic fault orders of bearing [inner,roller,cage,outer]
+Should be in orders (per revolution)</dd>
+<dt>maintitle <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Main title of figure</dd>
+<dt>harmonics <span class="classifier-delimiter">:</span> <span class="classifier">array_like of ints, optional</span></dt>
+<dd>Number of harmonics to plot</dd>
+<dt>subbands <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first">Number of side-bands to plot per harmonic</p>
+<p class="last">fig : figure object
+The figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.plotcepstrum">
+<code class="descclassname">pyvib.plt.</code><code class="descname">plotcepstrum</code><span class="sig-paren">(</span><em>cep</em>, <em>dt</em>, <em>ax</em>, <em>xlim=None</em>, <em>line='-k'</em>, <em>width=None</em>, <em>label=None</em>, <em>zorder=3</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.plotcepstrum" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Plot a cepstrum with certain limit in x and y direction</div></blockquote>
+<dl class="docutils">
+<dt>cep <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Cepstrum values</dd>
+<dt>dt <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Delta time</dd>
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to plot on</dd>
+<dt>xlim <span class="classifier-delimiter">:</span> <span class="classifier">None or array_like, optional</span></dt>
+<dd><p class="first">X-axis limits:</p>
+<ul class="last simple">
+<li>None for showing the entire spectrum</li>
+<li>[xmin, xmax] for a limit</li>
+</ul>
+</dd>
+<dt>line <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Design of the line, including color and linetype</dd>
+<dt>width <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Linewidth</dd>
+<dt>label <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Label for legends</dd>
+<dt>line <span class="classifier-delimiter">:</span> <span class="classifier">line object</span></dt>
+<dd>The spectrum line object</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.plotfft">
+<code class="descclassname">pyvib.plt.</code><code class="descname">plotfft</code><span class="sig-paren">(</span><em>Y</em>, <em>df</em>, <em>ax</em>, <em>xlim=None</em>, <em>linetype='-k'</em>, <em>width=None</em>, <em>label=''</em>, <em>zorder=3</em>, <em>color=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.plotfft" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Plot a spectrum with certain limit in x and y direction</div></blockquote>
+<dl class="docutils">
+<dt>Y <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Spectrum values</dd>
+<dt>df <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Delta frequency</dd>
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to plot on</dd>
+<dt>xlim <span class="classifier-delimiter">:</span> <span class="classifier">None or array_like, optional</span></dt>
+<dd><p class="first">X-axis limits:</p>
+<ul class="last simple">
+<li>None for showing the entire spectrum</li>
+<li>[xmin, xmax] for a limit</li>
+</ul>
+</dd>
+<dt>line <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Design of the line, including color and linetype</dd>
+<dt>width <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Linewidth</dd>
+<dt>label <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Label for legends</dd>
+<dt>zorder <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd>The plotting depth order</dd>
+<dt>color <span class="classifier-delimiter">:</span> <span class="classifier">string, or RGB/RGBA tupple</span></dt>
+<dd>The line color
+Will override line color</dd>
+<dt>line <span class="classifier-delimiter">:</span> <span class="classifier">line object</span></dt>
+<dd>The spectrum line object</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.plotforcingfreqs">
+<code class="descclassname">pyvib.plt.</code><code class="descname">plotforcingfreqs</code><span class="sig-paren">(</span><em>Y</em>, <em>df</em>, <em>X</em>, <em>forcingfreqs</em>, <em>forcingfreqtitles=None</em>, <em>maintitle=''</em>, <em>harmonics=8</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.plotforcingfreqs" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Plots a 2x2 subplot figure of the same spectrum, but with harmonic lines</div></blockquote>
+<p>and side-bands for each fault type</p>
+<blockquote>
+<div></div></blockquote>
+<dl class="docutils">
+<dt>Y <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Spectrum to plot</dd>
+<dt>df <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Delta frequency in Hz</dd>
+<dt>X <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Shaft speed in Hz</dd>
+<dt>forcingfreqs <span class="classifier-delimiter">:</span> <span class="classifier">float array_like</span></dt>
+<dd>Forcing frequencies</dd>
+<dt>forcingfreqtitles <span class="classifier-delimiter">:</span> <span class="classifier">list of strings, optional</span></dt>
+<dd>Title for each forcing frequency
+Must be as long as len(forcingfreqs)</dd>
+<dt>maintitle <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Main title of figure</dd>
+<dt>harmonics <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd>Number of harmonics to plot</dd>
+<dt>subbands <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first">Number of side-bands to plot per harmonic</p>
+<p class="last">fig : figure object
+The figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.plotharmonics">
+<code class="descclassname">pyvib.plt.</code><code class="descname">plotharmonics</code><span class="sig-paren">(</span><em>fhar</em>, <em>fsub</em>, <em>ax</em>, <em>**kwParameters</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.plotharmonics" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Plot harmonics and sidebands</div></blockquote>
+<dl class="docutils">
+<dt>fhar <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Harmonic frequency</dd>
+<dt>fsub <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Sideband frequency</dd>
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to plot on</dd>
+<dt>nhar <span class="classifier-delimiter">:</span> <span class="classifier">int or list of ints, optional</span></dt>
+<dd><p class="first">How many harmonics to plot:</p>
+<ul class="last simple">
+<li>If integer, it defines how many harmonics to plot</li>
+<li>If list, define which harmonics to plot, i.e. [1,2,4]</li>
+<li>Else the axis xlim defines how many to plot</li>
+</ul>
+</dd>
+<dt>nsub_p <span class="classifier-delimiter">:</span> <span class="classifier">int or list of ints, optional</span></dt>
+<dd><p class="first">How many positive sidebands to plot:</p>
+<ul class="last simple">
+<li>If integer, it defines how many to plot for each harmonic</li>
+<li>If list, it defines how many plot at each harmonic. i.e. [1,1,2]</li>
+<li>Else 1 is plotted per harmonic</li>
+</ul>
+</dd>
+<dt>nsub_n <span class="classifier-delimiter">:</span> <span class="classifier">int or list of ints, optional</span></dt>
+<dd>See description of nsub_p</dd>
+<dt>harcolor <span class="classifier-delimiter">:</span> <span class="classifier">string or tupple of floats, optional</span></dt>
+<dd><p class="first">Color of each harmonic:</p>
+<ul class="last simple">
+<li>If string, normal colors like ‘r’ or ‘k’</li>
+<li>If tupple, RGBA is used. All numbers &lt;0.0, 1.0&gt;</li>
+</ul>
+</dd>
+<dt>harstyle <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Style of harmonic</dd>
+<dt>harwidth <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Linewidth of harmonic</dd>
+<dt>harlabel <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Legend label of harmonic</dd>
+<dt>subcolor <span class="classifier-delimiter">:</span> <span class="classifier">string or tupple of floats, optional</span></dt>
+<dd><p class="first">Subband color:</p>
+<ul class="last simple">
+<li>If string, normal colors like ‘r’ or ‘k’</li>
+<li>If tupple, RGBA is used. All numbers &lt;0.0, 1.0&gt;</li>
+</ul>
+</dd>
+<dt>substyle <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Style of subbands</dd>
+<dt>subwidth <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Linewidth of subbands</dd>
+<dt>sublabel <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd><p class="first">Legend label of subbands</p>
+<p class="last">None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.plotsquare">
+<code class="descclassname">pyvib.plt.</code><code class="descname">plotsquare</code><span class="sig-paren">(</span><em>corner1</em>, <em>corner2</em>, <em>ax</em>, <em>line='-r'</em>, <em>label=''</em>, <em>linewidth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.plotsquare" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Plot a square</div></blockquote>
+<dl class="docutils">
+<dt>corner1 <span class="classifier-delimiter">:</span> <span class="classifier">tupple or array_like of floats</span></dt>
+<dd>(x,y) position of lower left corner</dd>
+<dt>corner2 <span class="classifier-delimiter">:</span> <span class="classifier">tupple or array_like of floats</span></dt>
+<dd>(x,y) position of upper right corner</dd>
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to plot on</dd>
+<dt>line <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Design of line with color and linetype</dd>
+<dt>label <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd><p class="first">Legend label</p>
+<p class="last">None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.rgb2hex">
+<code class="descclassname">pyvib.plt.</code><code class="descname">rgb2hex</code><span class="sig-paren">(</span><em>r</em>, <em>g</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.rgb2hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert RGB to a hex string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>r</strong> (<em>int</em>) – Red &lt;0, 255&gt;</li>
+<li><strong>g</strong> (<em>int</em>) – Green &lt;0, 255&gt;</li>
+<li><strong>b</strong> (<em>int</em>) – Blue &lt;0, 255&gt;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hex</strong> – Hex string</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.savefig">
+<code class="descclassname">pyvib.plt.</code><code class="descname">savefig</code><span class="sig-paren">(</span><em>fig</em>, <em>path</em>, <em>name</em>, <em>pad=0.03</em>, <em>dpi=200.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.savefig" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Saves the figure to file</div></blockquote>
+<dl class="docutils">
+<dt>fig <span class="classifier-delimiter">:</span> <span class="classifier">figure object</span></dt>
+<dd>The figure to save</dd>
+<dt>path <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>Path to image folder. Dont add at the end</dd>
+<dt>name <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>Name of the image. Default is .eps ending.
+Use whatever ending is appropriate
+.png, .jpg, .eps, .pdf etc.</dd>
+<dt>pad <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Padding between frame and axis</dd>
+<dt>dpi <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first">resolution of lossy formats</p>
+<p class="last">None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.set_tickformat">
+<code class="descclassname">pyvib.plt.</code><code class="descname">set_tickformat</code><span class="sig-paren">(</span><em>ax</em>, <em>axes</em>, <em>fmat='%.1f'</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.set_tickformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set certain format on numbers on axes</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ax</strong> (<em>axis object</em>) – Axis</li>
+<li><strong>axes</strong> (<em>string</em>) – both, x or y</li>
+<li><strong>fmat</strong> (<em>string</em>) – Number format to use</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.set_xticks">
+<code class="descclassname">pyvib.plt.</code><code class="descname">set_xticks</code><span class="sig-paren">(</span><em>ax</em>, <em>majorspacing</em>, <em>minorspacing=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.set_xticks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the major and minor spacing of the x-axis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ax</strong> (<em>figure axis</em>) – The axis</li>
+<li><strong>majorspacing</strong> (<em>float</em><em> or </em><em>array_like</em>) – The desired major spacing.
+If single value: Spaces at multiples of majorspacing
+If array_like: Makes spacing at these points</li>
+<li><strong>minorspacing</strong> (<em>float</em><em> or </em><em>array_like</em><em>, </em><em>optional</em>) – Sets the minor spacing. Same rules as majorspacing</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.set_xylim">
+<code class="descclassname">pyvib.plt.</code><code class="descname">set_xylim</code><span class="sig-paren">(</span><em>xlim, ax, ylim_mult=[1.0, 1.1], lines=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.set_xylim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the desired x-lim, and adjustts the y-lim to fit the new x-lim</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xlim</strong> (<em>float 1D array_lime</em>) – The desired x-lim</li>
+<li><strong>ax</strong> (<em>plt axis</em>) – The axis</li>
+<li><strong>ylim_mul</strong> (<em>float 1D array_like</em><em>, </em><em>optional</em>) – Margins for the calculated y-limit in gain</li>
+<li><strong>lines</strong> (<em>1D array_like with lines</em><em>, </em><em>optional</em>) – Choose to get y-lim of certain lines instad of all available in ax.
+None if all should be used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.set_yticks">
+<code class="descclassname">pyvib.plt.</code><code class="descname">set_yticks</code><span class="sig-paren">(</span><em>ax</em>, <em>majorspacing</em>, <em>minorspacing=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.set_yticks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the major and minor spacing of the y-axis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ax</strong> (<em>figure axis</em>) – The axis</li>
+<li><strong>majorspacing</strong> (<em>float</em><em> or </em><em>array_like</em>) – The desired major spacing.
+If single value: Spaces at multiples of majorspacing
+If array_like: Makes spacing at these points</li>
+<li><strong>minorspacing</strong> (<em>float</em><em> or </em><em>array_like</em><em>, </em><em>optional</em>) – Sets the minor spacing. Same rules as majorspacing</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.subfiglabels">
+<code class="descclassname">pyvib.plt.</code><code class="descname">subfiglabels</code><span class="sig-paren">(</span><em>fig</em>, <em>fs</em>, <em>usetex</em>, <em>position='upperrightoutside'</em>, <em>move=3.0</em>, <em>skipaxes=None</em>, <em>transpose=False</em>, <em>axes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.subfiglabels" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Adds index to all subfigures in a placement of choice</div></blockquote>
+<p>Should run fig.tight_layout() first</p>
+<blockquote>
+<div></div></blockquote>
+<dl class="docutils">
+<dt>fig <span class="classifier-delimiter">:</span> <span class="classifier">figure object</span></dt>
+<dd>Figure to add indices on</dd>
+<dt>fs <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Fontsize</dd>
+<dt>usetex <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd>Whether latex rendring should be used</dd>
+<dt>position <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd><p class="first">Position of indices:</p>
+<ul class="last simple">
+<li>upperleft</li>
+<li>upperleftoutside</li>
+<li>upperrightoutside</li>
+<li>undercaption</li>
+</ul>
+</dd>
+<dt>move <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Move slightly if crashing with edges etc.</dd>
+<dt>transpose <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first">If true, subfiglabels are column-major instad</p>
+<p class="last">None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.textCorner">
+<code class="descclassname">pyvib.plt.</code><code class="descname">textCorner</code><span class="sig-paren">(</span><em>fig</em>, <em>ax</em>, <em>label</em>, <em>textbbox=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.textCorner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add text in upper left corner of axis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fig</strong> (<em>figure object</em>) – </li>
+<li><strong>ax</strong> (<em>axis object</em>) – </li>
+<li><strong>label</strong> (<em>string</em>) – Label in the corner</li>
+<li><strong>textbbow</strong> (<em>bbox</em>) – Text bounding box
+e.g. bboxMe = {‘facecolor’:’white’, ‘edgecolor’:’white’, ‘zorder’:-100, ‘pad’:0}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.useexp">
+<code class="descclassname">pyvib.plt.</code><code class="descname">useexp</code><span class="sig-paren">(</span><em>ax</em>, <em>exp=True</em>, <em>thr=(-1</em>, <em>1)</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.useexp" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Use exponential term on y-axis on an axis</div></blockquote>
+<dl class="docutils">
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">axis object</span></dt>
+<dd>Axis to make exponential</dd>
+<dt>exp <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd>Turn on or off exp.</dd>
+<dt>thr <span class="classifier-delimiter">:</span> <span class="classifier">tupple, optional</span></dt>
+<dd><p class="first">Lower and upper 10^X threshold for using scientific notation</p>
+<p class="last">None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.plt.usetex">
+<code class="descclassname">pyvib.plt.</code><code class="descname">usetex</code><span class="sig-paren">(</span><em>latex=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.plt.usetex" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Use latex font in figures</div></blockquote>
+<dl class="docutils">
+<dt>latex <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd><p class="first">Turn off or on latex rendring</p>
+<p class="last">None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bearing.html"
+                        title="previous chapter">Bearing functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="diagnose.html"
+                        title="next chapter">Diagnose functions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/plt.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="diagnose.html" title="Diagnose functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bearing.html" title="Bearing functions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andreas Klausen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
