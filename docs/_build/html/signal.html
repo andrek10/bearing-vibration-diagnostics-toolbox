@@ -1,0 +1,372 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Signal processing &#8212; VibPy 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fourier transforms" href="fft.html" />
+    <link rel="prev" title="Welcome to VibPy’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="fft.html" title="Fourier transforms"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to VibPy’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VibPy 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pyvib.signal">
+<span id="signal-processing"></span><h1>Signal processing<a class="headerlink" href="#module-pyvib.signal" title="Permalink to this headline">¶</a></h1>
+<p>signal.py</p>
+<dl class="function">
+<dt id="pyvib.signal.autocorrelation">
+<code class="descclassname">pyvib.signal.</code><code class="descname">autocorrelation</code><span class="sig-paren">(</span><em>y</em>, <em>Fs</em>, <em>normalize=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.signal.autocorrelation" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Get auto-correlation of the signal</div></blockquote>
+<dl class="docutils">
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Signal</dd>
+<dt>Fs <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Sampling rate</dd>
+<dt>normalize <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd><p class="first">Whether signal should be normalized</p>
+<p class="last">ac : float 1D array
+Autocorrelated signal</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.signal.downsample">
+<code class="descclassname">pyvib.signal.</code><code class="descname">downsample</code><span class="sig-paren">(</span><em>s</em>, <em>n</em>, <em>phase=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.signal.downsample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direct downsampling of a signal</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> (<em>1D array</em>) – Signal to downsample</li>
+<li><strong>n</strong> (<em>int</em>) – Downsampling factor</li>
+<li><strong>phase</strong> (<em>int</em>) – Phase lag before sampling</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>s_out</strong> – Downsampled signal</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">1D array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyvib.signal.encoder2position">
+<code class="descclassname">pyvib.signal.</code><code class="descname">encoder2position</code><a class="headerlink" href="#pyvib.signal.encoder2position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from encoder pulses to position signal</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>t</strong> (<em>float 1D array</em>) – Time vector</li>
+<li><strong>enc</strong> (<em>float 1D array</em>) – Measured analog signal</li>
+<li><strong>thr</strong> (<em>float</em>) – Threshold for pulses going up or down</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>t_s</strong> (<em>float 1D array</em>) – Position time vector</li>
+<li><strong>s</strong> (<em>float 1D array</em>) – Position vector</li>
+<li><strong>n</strong> (<em>int</em>) – Number of pulses encountered</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.signal.envelope">
+<code class="descclassname">pyvib.signal.</code><code class="descname">envelope</code><span class="sig-paren">(</span><em>y</em>, <em>absolute=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.signal.envelope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get envelope of signal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>y</strong> (<em>float 1D array</em>) – Signal to get envelope of</li>
+<li><strong>absolute</strong> (<em>boolean</em><em>, </em><em>optional</em>) – <p>Whether the absolute value (envelope is returned):</p>
+<ul>
+<li>True for envelope</li>
+<li>False for analytic signal</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>env</strong> – Enveloped or analytic signal</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float 1D array</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><code class="xref py py-func docutils literal notranslate"><span class="pre">fftwhilbert()</span></code></dt>
+<dd>function A faster way of calculating the analytic signal</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.signal.fftwconvolve">
+<code class="descclassname">pyvib.signal.</code><code class="descname">fftwconvolve</code><span class="sig-paren">(</span><em>in1</em>, <em>in2</em>, <em>mode='full'</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.signal.fftwconvolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolve two N-dimensional arrays using PYFFTW.
+This is a modified version of scipy.signal.fftwconvolve</p>
+<p>Convolve <cite>in1</cite> and <cite>in2</cite> using the fast Fourier transform method, with
+the output size determined by the <cite>mode</cite> argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>in1</strong> (<em>float 1D array</em>) – First input.</li>
+<li><strong>in2</strong> (<em>float 1D array</em>) – Second input. Should have the same number of dimensions as <cite>in1</cite>.
+If operating in ‘valid’ mode, either <cite>in1</cite> or <cite>in2</cite> must be
+at least as large as the other in every dimension.</li>
+<li><strong>mode</strong> (<em>str {'full'</em><em>, </em><em>'valid'</em><em>, </em><em>'same'}</em><em>, </em><em>optional</em>) – <p>A string indicating the size of the output:</p>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">full</span></code></dt>
+<dd>The output is the full discrete linear convolution
+of the inputs. (Default)</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">valid</span></code></dt>
+<dd>The output consists only of those elements that do not
+rely on the zero-padding.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">same</span></code></dt>
+<dd>The output is the same size as <cite>in1</cite>, centered
+with respect to the ‘full’ output.</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – An N-dimensional array containing a subset of the discrete linear
+convolution of <cite>in1</cite> with <cite>in2</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float 1D array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.signal.generalized_synchronous_average">
+<code class="descclassname">pyvib.signal.</code><code class="descname">generalized_synchronous_average</code><span class="sig-paren">(</span><em>t</em>, <em>vib</em>, <em>t_s</em>, <em>s</em>, <em>R</em>, <em>ds=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.signal.generalized_synchronous_average" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Estimate the synchronous average of a signal that actually varies in speed</div></blockquote>
+<p>Based on
+Abboud, D., Antoni, J., Sieg-Zieba, S., &amp; Eltabach, M. (2016).
+Deterministic-random separation in nonstationary regime.
+Journal of Sound and Vibration, 362, 305-326.</p>
+<blockquote>
+<div></div></blockquote>
+<dl class="docutils">
+<dt>t <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Time of signal</dd>
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Signal</dd>
+<dt>t_s <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Time of shaft position</dd>
+<dt>s <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Shaft position</dd>
+<dt>R <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Number of regimes</dd>
+<dt>ds <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Force a certain delta position if wanted</dd>
+<dt>gsa <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Synchronous signal which can be removed</dd>
+<dt>s_ot <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Order tracked position</dd>
+<dt>vib_ot <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Order tracked signal</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.signal.ordertrack">
+<code class="descclassname">pyvib.signal.</code><code class="descname">ordertrack</code><span class="sig-paren">(</span><em>t</em>, <em>y</em>, <em>t_s</em>, <em>s</em>, <em>ds</em>, <em>cubic=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.signal.ordertrack" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Order track the vibration signal to match a desired position vector</p>
+<p>t : float 1D array
+Time signal</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Signal to order track</dd>
+<dt>t_s <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Time of position signal</dd>
+<dt>s <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Position signal in number of rounds</dd>
+<dt>ds <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Desired delta position</dd>
+<dt>cubic <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd>Whether cubic interpolation is used</dd>
+<dt>s_ot <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Shaft position of returned signal</dd>
+<dt>y_ot <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Order tracked signal</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.signal.teager">
+<code class="descclassname">pyvib.signal.</code><code class="descname">teager</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.signal.teager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the teager energy operator</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<em>1D array</em>) – Input signal</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>x_teager</strong> – Teager energy operator</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float 1D array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.signal.tsakeep">
+<code class="descclassname">pyvib.signal.</code><code class="descname">tsakeep</code><span class="sig-paren">(</span><em>y</em>, <em>Fs</em>, <em>X</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.signal.tsakeep" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Duplicates the synchronous signal to the original length</div></blockquote>
+<dl class="docutils">
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Signal</dd>
+<dt>Fs <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Sampling rate in Hz</dd>
+<dt>X <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Synchronous speed in Hz</dd>
+<dt>y_sync <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Synchronous signal</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.signal.tsaremove">
+<code class="descclassname">pyvib.signal.</code><code class="descname">tsaremove</code><span class="sig-paren">(</span><em>y</em>, <em>Fs</em>, <em>X</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.signal.tsaremove" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Subtracts the synchronous average of a signal</div></blockquote>
+<dl class="docutils">
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Signal</dd>
+<dt>Fs <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Sampling rate in Hz</dd>
+<dt>X <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Synchronous speed in Hz</dd>
+<dt>y_nonsync <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Non-synchronous signal</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to VibPy’s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fft.html"
+                        title="next chapter">Fourier transforms</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/signal.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="fft.html" title="Fourier transforms"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to VibPy’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VibPy 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andreas Klausen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

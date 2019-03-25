@@ -1,0 +1,421 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Filters &#8212; VibPy 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Signal features" href="features.html" />
+    <link rel="prev" title="Fourier transforms" href="fft.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="features.html" title="Signal features"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fft.html" title="Fourier transforms"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VibPy 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pyvib.filter">
+<span id="filters"></span><h1>Filters<a class="headerlink" href="#module-pyvib.filter" title="Permalink to this headline">¶</a></h1>
+<p>Filer design</p>
+<dl class="class">
+<dt id="pyvib.filter.IIRFilter">
+<em class="property">class </em><code class="descclassname">pyvib.filter.</code><code class="descname">IIRFilter</code><span class="sig-paren">(</span><em>b</em>, <em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.IIRFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>An IIR filter object that can update per sample.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>b</strong> (<em>float 1D array</em>) – Filter coefficients</li>
+<li><strong>a</strong> (<em>float 1D array</em>) – Filter coefficients</li>
+<li><strong>functions</strong> (<em>Object</em>) – </li>
+<li><strong>----------------</strong> – </li>
+<li><strong>update</strong><strong>(</strong><strong>)</strong> (<em>Filter the next sample</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.signal.butter</span></code></p>
+</div>
+<dl class="method">
+<dt id="pyvib.filter.IIRFilter.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>xin</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.IIRFilter.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the filter with a new sample</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>xin</strong> (<em>float</em>) – The new sample</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>xout</strong> – The filtered sample</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.blinddeconvolution">
+<code class="descclassname">pyvib.filter.</code><code class="descname">blinddeconvolution</code><span class="sig-paren">(</span><em>z</em>, <em>L</em>, <em>part=1.0</em>, <em>k=4.0</em>, <em>maxIter=1000</em>, <em>maxMu=2.0</em>, <em>stopCrit=0.01</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.blinddeconvolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iteratively identifies a filter g that deconvolves the filter h
+originally applied to z to return the deconvolved signal x.
+The iterator tries to maximize the kurtosis (impulsivity) of the
+deconvolved signal.
+The deconvolution is afterwards performed using:
+x = pyvib.signal.fftwconvolve(z, gNew, ‘valid’)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>z</strong> (<em>float 1D array</em>) – Signal to deconvolve</li>
+<li><strong>L</strong> (<em>int</em>) – Length of filter</li>
+<li><strong>part</strong> (<em>float</em><em>, </em><em>optional</em>) – Percentage of the data to train the filter on.
+Must be within &lt;0, 1&gt;</li>
+<li><strong>- float</strong><strong>, </strong><strong>optional</strong> (<em>k</em>) – Exponent of the objective. 4 gives kurtosis</li>
+<li><strong>maxIter</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of iterations to run</li>
+<li><strong>maxMu</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum training coefficient</li>
+<li><strong>stopCrit</strong> (<em>float</em><em>, </em><em>optional</em>) – Stopping criterion</li>
+<li><strong>debug</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Print progression if true</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>gNew</strong> – Filter kernel that deconvolves the signal</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float 1D array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.cpw">
+<code class="descclassname">pyvib.filter.</code><code class="descname">cpw</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.cpw" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Removes synchronous parts of a signal using Cepstrum Pre-Whitening</div></blockquote>
+<dl class="docutils">
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Signal</dd>
+<dt>xPW <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
+<dd>Whitened signal</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.decimate">
+<code class="descclassname">pyvib.filter.</code><code class="descname">decimate</code><span class="sig-paren">(</span><em>y</em>, <em>decimatelist</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.decimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply decimation of a signal y with time t by applying an IIR filter
+with the decimation factor given by all items in decimatelist</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>y</strong> (<em>float 1D array</em>) – The signal</li>
+<li><strong>decimatelist</strong> (<em>int</em><em>, </em><em>array_like</em>) – Acquire this list using get_decimatelist()</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>yd</strong> – Decimated signal</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float 1D array</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#pyvib.filter.get_decimatelist" title="pyvib.filter.get_decimatelist"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_decimatelist()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.filterbank_compose">
+<code class="descclassname">pyvib.filter.</code><code class="descname">filterbank_compose</code><span class="sig-paren">(</span><em>xbank</em>, <em>f0</em>, <em>f1</em>, <em>xsizes</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterbank_compose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recompose the filter bank to a single signal</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>xbank</strong> (<em>float 1D array</em>) – The filterbank</li>
+<li><strong>f1</strong> (<em>f0</em><em>,</em>) – The filter kernels</li>
+<li><strong>xsizes</strong> (<em>list of list of ints</em>) – The sizes of signals before decomposing</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>x_hat</strong> (<em>float array</em>) – The recomposed signal. Should be close to the original
+signal x after applying the lag</li>
+<li><strong>lag</strong> (<em>int</em>) – The lag of the recomposed signal
+Should ideally use x_hat[lag:-lag] after recomposition
+x_hat[lag:-lag] approximates x[0:-lag*2]</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.filterbank_decompose">
+<code class="descclassname">pyvib.filter.</code><code class="descname">filterbank_decompose</code><span class="sig-paren">(</span><em>x</em>, <em>h0</em>, <em>h1</em>, <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterbank_decompose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decompose a signal using supplied filters for a certain numebr of levels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>float 1D array</em>) – Signal</li>
+<li><strong>h1</strong> (<em>h0</em><em>,</em>) – Filter kernels
+h0 is low-pass, h1 is highpass</li>
+<li><strong>level</strong> (<em>int</em>) – The filter decomposition level</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>xbank</strong> (<em>list of float 1D arrays</em>) – The filter-bank coefficients ranging from lowest frequency to highest frequency</li>
+<li><strong>xsizes</strong> (<em>list of lists of integers</em>) – The sizes of signals before decomposing.
+Only needed for recomposing using filterbank_compose()</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#pyvib.filter.get_filterbankfilters" title="pyvib.filter.get_filterbankfilters"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_filterbankfilters()</span></code></a>, <a class="reference internal" href="#pyvib.filter.filterbank_compose" title="pyvib.filter.filterbank_compose"><code class="xref py py-func docutils literal notranslate"><span class="pre">filterbank_compose()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.filterdesign">
+<code class="descclassname">pyvib.filter.</code><code class="descname">filterdesign</code><span class="sig-paren">(</span><em>Yh</em>, <em>M</em>, <em>plot=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterdesign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Design a FIR filter that matches a frequency response</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Yh</strong> (<em>float 1D array</em>) – The amplitude specrum to match</li>
+<li><strong>M</strong> (<em>int</em>) – Number of coefficients to use in the filter</li>
+<li><strong>plot</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Whether the resulting filter should be plotted</li>
+<li><strong>Resturns</strong> – </li>
+<li><strong>--------</strong> – </li>
+<li><strong>h</strong> (<em>float 1D array</em>) – The designed FIR filter kernel</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.get_decimatelist">
+<code class="descclassname">pyvib.filter.</code><code class="descname">get_decimatelist</code><span class="sig-paren">(</span><em>desireddecimation</em>, <em>maxdec=12</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_decimatelist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a decimation list for using the decimate function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>desireddecimation</strong> (<em>int</em>) – Desired decimation factor in total
+Going from a sample frequency of 50 kHz to 10 kHz is a factor of 5</li>
+<li><strong>maxdec</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum decimation per iteration
+Defaults to 12</li>
+<li><strong>direction</strong> (<em>int</em><em>, </em><em>optional</em>) – Step to make if a decimation factor is not suitable</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>decimatelist</strong> – Decimation factors to follow per decimation iteration.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#pyvib.filter.decimate" title="pyvib.filter.decimate"><code class="xref py py-func docutils literal notranslate"><span class="pre">decimate()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.get_filterbankfilters">
+<code class="descclassname">pyvib.filter.</code><code class="descname">get_filterbankfilters</code><span class="sig-paren">(</span><em>N</em>, <em>fc=0.25</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_filterbankfilters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make filters for filterbank decomposition and recomposition
+These are even order FIR filters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>N</strong> (<em>int</em>) – The filter length. Must be even number</li>
+<li><strong>fc</strong> (<em>float</em>) – Normalized cutoff frequency &lt;0.0, 0.5&gt;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>f0, f1, h0, h1</strong> – The filter kernels</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">arrays of float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.get_filterbankfilters_kurtogram">
+<code class="descclassname">pyvib.filter.</code><code class="descname">get_filterbankfilters_kurtogram</code><span class="sig-paren">(</span><em>N=16</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_filterbankfilters_kurtogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Acquire the filterbank filters used in:
+Antoni, Jerome. “Fast computation of the kurtogram for the detection of transient faults.”
+Mechanical Systems and Signal Processing 21.1 (2007): 108-124.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> (<em>int</em>) – Number of filterbank coefficients</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><strong>h</strong> (<em>float 1D array</em>) – Lowpass filter</li>
+<li><strong>g</strong> (<em>float 1D array</em>) – Highpass filter</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyvib.filter.waveletfilter">
+<code class="descclassname">pyvib.filter.</code><code class="descname">waveletfilter</code><span class="sig-paren">(</span><em>f0</em>, <em>sigma</em>, <em>Fs</em>, <em>N</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.waveletfilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs the frequency transformed wavelet filter. Can be used to
+filter a frequency transformed signal by taking Y*Ksi.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f0</strong> (<em>float</em>) – The center frequency for the bandpass filter in Hz</li>
+<li><strong>sigma</strong> (<em>float</em>) – The width of the filter in Hz</li>
+<li><strong>Fs</strong> (<em>float</em>) – The sampling frequency of the signal in Hz</li>
+<li><strong>N</strong> (<em>int</em>) – The number of samples in the signal in Hz</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Ksi</strong> – Filter in the frequency domain.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float 1D array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fft.html"
+                        title="previous chapter">Fourier transforms</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="features.html"
+                        title="next chapter">Signal features</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/filter.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="features.html" title="Signal features"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fft.html" title="Fourier transforms"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VibPy 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andreas Klausen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

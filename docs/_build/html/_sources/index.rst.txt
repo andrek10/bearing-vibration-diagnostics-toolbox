@@ -1,0 +1,25 @@
+Welcome to VibPy's documentation!
+=================================
+
+Indices and tables
+==================
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+.. toctree::
+    :maxdepth: 3
+    :caption: Contents:
+
+    signal
+    fft
+    filter
+    features
+    bearing
+    plt
+    diagnose
+    linalg
+    stats
+    particlefilter
+    acoustics
+    misc
