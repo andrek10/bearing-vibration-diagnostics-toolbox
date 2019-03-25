@@ -22,3 +22,7 @@ Windows users may get PyFFTW from
 https://www.lfd.uci.edu/~gohlke/pythonlibs/
 
 Otherwise, FFTW and PyFFTW are available through the Conda-Forge repository.
+
+## Documentation
+
+https://andrek10.github.io/bearing-vibration-diagnostics-toolbox/
