@@ -1,0 +1,13 @@
+numpy
+pyfftw
+numba
+scipy
+scikit-learn
+pandas
+matplotlib
+recommonmark
+sphinx
+sphinx-rtd-theme
+sphinxcontrib-bibtex
+sphinx-autobuild
+psutil

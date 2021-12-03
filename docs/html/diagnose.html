@@ -1,21 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Diagnose functions &#8212; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -37,7 +35,8 @@
         <li class="right" >
           <a href="plt.html" title="Plotting funtions"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Diagnose functions</a></li> 
       </ul>
     </div>  
 
@@ -46,136 +45,130 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-pyvib.diagnose">
+  <section id="module-pyvib.diagnose">
 <span id="diagnose-functions"></span><h1>Diagnose functions<a class="headerlink" href="#module-pyvib.diagnose" title="Permalink to this headline">¶</a></h1>
 <p>diagnose</p>
-<dl class="function">
-<dt id="pyvib.diagnose.ES_SVD">
-<code class="descclassname">pyvib.diagnose.</code><code class="descname">ES_SVD</code><span class="sig-paren">(</span><em>U</em>, <em>sigma</em>, <em>V</em>, <em>time</em>, <em>f_fault</em>, <em>f_side</em>, <em>PMItreshold</em>, <em>estimate_xi_func=&lt;function get_SVDxi&gt;</em>, <em>estimate_xi_func_params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.ES_SVD" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.diagnose.ES_SVD">
+<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">ES_SVD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_fault</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PMItreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func=&lt;function</span> <span class="pre">get_SVDxi&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func_params=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.ES_SVD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Envelope Score - SVD
 Get PMI and weights for each fault frequency in f_fault
 Based on envelope FFT score</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>U</strong> (<em>array 2D float</em>) – </li>
-<li><strong>sigma</strong> (<em>array 1D float</em>) – The singular values</li>
-<li><strong>V</strong> (<em>array 2D float</em>) – </li>
-<li><strong>time</strong> (<em>array 1D float</em>) – The time of the signal before SVD is computed</li>
-<li><strong>f_fault</strong> (<em>list</em><em> or </em><em>array_like</em>) – Frequency of each fault type</li>
-<li><strong>f_side</strong> (<em>list</em><em> or </em><em>array_like</em>) – Side-band frequency for each fault type.
-Use 0.0 for entries without side-bands</li>
-<li><strong>PMIthreshold</strong> (<em>float</em><em>, </em><em>optional</em>) – The treshold for which a PMI becomes a weight</li>
-<li><strong>estimate_xi_func</strong> (<em>function</em><em>, </em><em>optional</em>) – Which function to use to estimate the X_i before env.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array 2D float</em>) – </p></li>
+<li><p><strong>sigma</strong> (<em>array 1D float</em>) – The singular values</p></li>
+<li><p><strong>V</strong> (<em>array 2D float</em>) – </p></li>
+<li><p><strong>time</strong> (<em>array 1D float</em>) – The time of the signal before SVD is computed</p></li>
+<li><p><strong>f_fault</strong> (<em>list</em><em> or </em><em>array_like</em>) – Frequency of each fault type</p></li>
+<li><p><strong>f_side</strong> (<em>list</em><em> or </em><em>array_like</em>) – Side-band frequency for each fault type.
+Use 0.0 for entries without side-bands</p></li>
+<li><p><strong>PMIthreshold</strong> (<em>float</em><em>, </em><em>optional</em>) – The treshold for which a PMI becomes a weight</p></li>
+<li><p><strong>estimate_xi_func</strong> (<em>function</em><em>, </em><em>optional</em>) – Which function to use to estimate the X_i before env.
 Deafult is based on an SVD in the time/angular domain.
-Must have (U, sigma, V, i) as input, and return x_i</li>
-<li><strong>estimate_xi_func_params</strong> (<em>list</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – List of extra variables to use as input
-None for no extra input</li>
+Must have (U, sigma, V, i) as input, and return x_i</p></li>
+<li><p><strong>estimate_xi_func_params</strong> (<em>list</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – List of extra variables to use as input
+None for no extra input</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>PMI</strong> (<em>list of 1D array</em>) – PMI for each fault period</li>
-<li><strong>W</strong> (<em>list of 1D array</em>) – Wights for each fault period</li>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>PMI</strong> (<em>list of 1D array</em>) – PMI for each fault period</p></li>
+<li><p><strong>W</strong> (<em>list of 1D array</em>) – Wights for each fault period</p></li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pyvib.diagnose.R_SVD">
-<code class="descclassname">pyvib.diagnose.</code><code class="descname">R_SVD</code><span class="sig-paren">(</span><em>U</em>, <em>sigma</em>, <em>V</em>, <em>time</em>, <em>f_fault</em>, <em>tolerance=0.02</em>, <em>PMItreshold=1.0</em>, <em>estimate_xi_func=&lt;function get_SVDxi&gt;</em>, <em>estimate_xi_func_params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.R_SVD" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.diagnose.R_SVD">
+<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">R_SVD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_fault</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance=0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PMItreshold=1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func=&lt;function</span> <span class="pre">get_SVDxi&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func_params=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.R_SVD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get PMI and weights for each fault frequency in f_fault
 Based on the R-SVD algorithm in paper:
 “A novel strategy for signal denoising using reweighted SVD and
 its applications to weak fault feature enhancement of rotating
 machinery”</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>U</strong> (<em>array 2D float</em>) – </li>
-<li><strong>sigma</strong> (<em>array 1D float</em>) – The singular values</li>
-<li><strong>V</strong> (<em>array 2D float</em>) – </li>
-<li><strong>time</strong> (<em>array 1D float</em>) – The time of the signal before SVD is computed</li>
-<li><strong>f_fault</strong> (<em>list</em><em> or </em><em>array_like</em>) – Frequency of each fault type</li>
-<li><strong>tolerance</strong> (<em>float</em><em>, </em><em>optional</em>) – Tolerance around f_fault that the peak is searched for.</li>
-<li><strong>PMIthreshold</strong> (<em>float</em><em>, </em><em>optional</em>) – The treshold for which a PMI becomes a weight</li>
-<li><strong>estimate_xi_func</strong> (<em>function</em><em>, </em><em>optional</em>) – Which function to use to estimate the X_i before autocorr and env.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array 2D float</em>) – </p></li>
+<li><p><strong>sigma</strong> (<em>array 1D float</em>) – The singular values</p></li>
+<li><p><strong>V</strong> (<em>array 2D float</em>) – </p></li>
+<li><p><strong>time</strong> (<em>array 1D float</em>) – The time of the signal before SVD is computed</p></li>
+<li><p><strong>f_fault</strong> (<em>list</em><em> or </em><em>array_like</em>) – Frequency of each fault type</p></li>
+<li><p><strong>tolerance</strong> (<em>float</em><em>, </em><em>optional</em>) – Tolerance around f_fault that the peak is searched for.</p></li>
+<li><p><strong>PMIthreshold</strong> (<em>float</em><em>, </em><em>optional</em>) – The treshold for which a PMI becomes a weight</p></li>
+<li><p><strong>estimate_xi_func</strong> (<em>function</em><em>, </em><em>optional</em>) – Which function to use to estimate the X_i before autocorr and env.
 Deafult is based on an SVD in the time/angular domain.
-Must have (U, sigma, V, i) as input, and return x_i</li>
-<li><strong>estimate_xi_func_params</strong> (<em>list</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – List of extra variables to use as input
-None for no extra input</li>
+Must have (U, sigma, V, i) as input, and return x_i</p></li>
+<li><p><strong>estimate_xi_func_params</strong> (<em>list</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – List of extra variables to use as input
+None for no extra input</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>PMI</strong> (<em>list of 1D array</em>) – PMI for each fault period</li>
-<li><strong>W</strong> (<em>list of 1D array</em>) – Wights for each fault period</li>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>PMI</strong> (<em>list of 1D array</em>) – PMI for each fault period</p></li>
+<li><p><strong>W</strong> (<em>list of 1D array</em>) – Wights for each fault period</p></li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pyvib.diagnose.diagnosefft">
-<code class="descclassname">pyvib.diagnose.</code><code class="descname">diagnosefft</code><span class="sig-paren">(</span><em>Y</em>, <em>df</em>, <em>charf</em>, <em>X</em>, <em>subband</em>, <em>debug=False</em>, <em>version=2</em>, <em>harmthreshold=3.0</em>, <em>subthreshold=3.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.diagnosefft" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.diagnose.diagnosefft">
+<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">diagnosefft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subband</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">harmthreshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subthreshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.diagnosefft" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div>Diagnose a spectrum for bearing faults. Returns a score</div></blockquote>
-<dl class="docutils">
-<dt>Y <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
-<dd>Spectrum values</dd>
-<dt>df <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Delta frequency in Hz</dd>
-<dt>charf <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Harmonic frequency</dd>
-<dt>X <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Shaft speed in Hz</dd>
-<dt>xubband <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Sideband frequency</dd>
-<dt>debug <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
-<dd>Whether debug information is returned</dd>
-<dt>version <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
-<dd><p class="first">Which version of this script to run. Default 2 with new noise estimator</p>
-<p class="last">score : float
+<div><p>Diagnose a spectrum for bearing faults. Returns a score</p>
+</div></blockquote>
+<dl>
+<dt>Y<span class="classifier">float 1D array</span></dt><dd><p>Spectrum values</p>
+</dd>
+<dt>df<span class="classifier">float</span></dt><dd><p>Delta frequency in Hz</p>
+</dd>
+<dt>charf<span class="classifier">float</span></dt><dd><p>Harmonic frequency</p>
+</dd>
+<dt>X<span class="classifier">float</span></dt><dd><p>Shaft speed in Hz</p>
+</dd>
+<dt>xubband<span class="classifier">float</span></dt><dd><p>Sideband frequency</p>
+</dd>
+<dt>debug<span class="classifier">boolean, optional</span></dt><dd><p>Whether debug information is returned</p>
+</dd>
+<dt>version<span class="classifier">int, optional</span></dt><dd><p>Which version of this script to run. Default 2 with new noise estimator</p>
+<p>score : float
 Score for fault being present</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pyvib.diagnose.diagnosevibrationfft">
-<code class="descclassname">pyvib.diagnose.</code><code class="descname">diagnosevibrationfft</code><span class="sig-paren">(</span><em>Y</em>, <em>df</em>, <em>X</em>, <em>bearing</em>, <em>radial=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.diagnosevibrationfft" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.diagnose.diagnosevibrationfft">
+<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">diagnosevibrationfft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bearing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.diagnosevibrationfft" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div>Diagnose a spectrum for all three fault types</div></blockquote>
-<dl class="docutils">
-<dt>Y <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
-<dd>Spectrum amplitude</dd>
-<dt>df <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Delta frequency in Hz</dd>
-<dt>X <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Shaft speed in Hz</dd>
-<dt>bearing <span class="classifier-delimiter">:</span> <span class="classifier">array_like of floats</span></dt>
-<dd>Bearing characteristic orders (inner,roller,cage,outer)</dd>
-<dt>radial <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
-<dd>Whether radial forces exists. If so, sidebands exists</dd>
-<dt>scores <span class="classifier-delimiter">:</span> <span class="classifier">float 1D array</span></dt>
-<dd>Score for [inner,roller,outer]</dd>
+<div><p>Diagnose a spectrum for all three fault types</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Y<span class="classifier">float 1D array</span></dt><dd><p>Spectrum amplitude</p>
+</dd>
+<dt>df<span class="classifier">float</span></dt><dd><p>Delta frequency in Hz</p>
+</dd>
+<dt>X<span class="classifier">float</span></dt><dd><p>Shaft speed in Hz</p>
+</dd>
+<dt>bearing<span class="classifier">array_like of floats</span></dt><dd><p>Bearing characteristic orders (inner,roller,cage,outer)</p>
+</dd>
+<dt>radial<span class="classifier">boolean, optional</span></dt><dd><p>Whether radial forces exists. If so, sidebands exists</p>
+</dd>
+<dt>scores<span class="classifier">float 1D array</span></dt><dd><p>Score for [inner,roller,outer]</p>
+</dd>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -195,17 +188,15 @@ Score for fault being present</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -225,12 +216,13 @@ Score for fault being present</p>
         <li class="right" >
           <a href="plt.html" title="Plotting funtions"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Diagnose functions</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andreas Klausen.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
     </div>
   </body>
 </html>

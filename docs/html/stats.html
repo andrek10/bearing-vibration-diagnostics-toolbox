@@ -1,21 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Statistical functions &#8212; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -37,7 +35,8 @@
         <li class="right" >
           <a href="linalg.html" title="Linear algebra"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Statistical functions</a></li> 
       </ul>
     </div>  
 
@@ -46,219 +45,196 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-pyvib.stats">
+  <section id="module-pyvib.stats">
 <span id="statistical-functions"></span><h1>Statistical functions<a class="headerlink" href="#module-pyvib.stats" title="Permalink to this headline">¶</a></h1>
 <p>Statistical functions</p>
-<dl class="function">
-<dt id="pyvib.stats.EHNR">
-<code class="descclassname">pyvib.stats.</code><code class="descname">EHNR</code><span class="sig-paren">(</span><em>x</em>, <em>Fs=1.0</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.EHNR" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.stats.EHNR">
+<span class="sig-prename descclassname"><span class="pre">pyvib.stats.</span></span><span class="sig-name descname"><span class="pre">EHNR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.EHNR" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get Envelope Harmonic-to-noise ratio
 Based on:
 Xu, X., Zhao, M., Lin, J., &amp; Lei, Y. (2016).
 Envelope harmonic-to-noise ratio for periodic impulses</p>
 <blockquote>
-<div>detection and its application to bearing diagnosis.</div></blockquote>
+<div><p>detection and its application to bearing diagnosis.</p>
+</div></blockquote>
 <p>Measurement, 91, 385-397.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> (<em>float 1D array</em>) – Signal</li>
-<li><strong>Fs</strong> (<em>float</em><em>, </em><em>optional</em>) – Sampling frequency</li>
-<li><strong>debug</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Whether debug information is returned</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float 1D array</em>) – Signal</p></li>
+<li><p><strong>Fs</strong> (<em>float</em><em>, </em><em>optional</em>) – Sampling frequency</p></li>
+<li><p><strong>debug</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Whether debug information is returned</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>EHNR</strong> – The EHNR value</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pyvib.stats.armodel">
-<code class="descclassname">pyvib.stats.</code><code class="descname">armodel</code><span class="sig-paren">(</span><em>y</em>, <em>p</em>, <em>Crit=0</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.armodel" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function tries to remove stationary signals by estimating an
-autoregressive model on the vibration signal. Afterwards this estiamte can
-be subtracted from the original signal using arresidual()</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>y</strong> (<em>float 1D array</em>) – Vibration data.</li>
-<li><strong>p</strong> (<em>int</em>) – Maximum number of filter coefficients</li>
-<li><strong>Crit</strong> (<em>int</em><em>, </em><em>optional</em>) – <p>Criterion for choosing optimal p:</p>
-<ul>
-<li>0 uses Akaike Information Criterium (AICc)</li>
-<li>1 uses Bayesian Information Criterium (BIC)</li>
-</ul>
-</li>
-<li><strong>debug</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Choose if debug information should be returned</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>aopt</strong> (<em>float 1D array</em>) – Optimal AR model parameters</li>
-<li><strong>popt</strong> (<em>int</em>) – Optimal model order</li>
-</ul>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#pyvib.stats.arresidual" title="pyvib.stats.arresidual"><code class="xref py py-func docutils literal notranslate"><span class="pre">arresidual()</span></code></a>, <a class="reference internal" href="#pyvib.stats.arresponse" title="pyvib.stats.arresponse"><code class="xref py py-func docutils literal notranslate"><span class="pre">arresponse()</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="pyvib.stats.arresidual">
-<code class="descclassname">pyvib.stats.</code><code class="descname">arresidual</code><span class="sig-paren">(</span><em>t</em>, <em>y</em>, <em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.arresidual" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the residual of the autoregressive model with coefficients a</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>t</strong> (<em>float 1D array</em>) – Time signal</li>
-<li><strong>y</strong> (<em>float 1D array</em>) – Signal to filter</li>
-<li><strong>a</strong> (<em>float 1D array</em>) – AR model coeffs</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>t</strong> (<em>float 1D array</em>) – New time signal</li>
-<li><strong>y</strong> (<em>float 1D array</em>) – Filtered signal</li>
-</ul>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pyvib.stats.arresponse">
-<code class="descclassname">pyvib.stats.</code><code class="descname">arresponse</code><span class="sig-paren">(</span><em>t</em>, <em>y</em>, <em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.arresponse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the predicted response of the autoregressive model with coeffs a</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>t</strong> (<em>float 1D array</em>) – Time signal</li>
-<li><strong>y</strong> (<em>float 1D array</em>) – Signal</li>
-<li><strong>a</strong> (<em>float 1D array</em>) – AR model coeffs</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>t</strong> (<em>float 1D array</em>) – New time signal</li>
-<li><strong>y</strong> (<em>float 1D array</em>) – Filtered signal</li>
-</ul>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pyvib.stats.covariance">
-<code class="descclassname">pyvib.stats.</code><code class="descname">covariance</code><span class="sig-paren">(</span><em>A</em>, <em>printSingular=False</em>, <em>tol=0.9</em>, <em>skipSignals=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.covariance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the covariance of columns in matrix A</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>A</strong> (<em>array</em>) – [m,n] array with m observatios and n signals.</li>
-<li><strong>printSingular</strong> (<em>bool</em><em>, </em><em>optional</em>) – Print list of singular signals</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>rho</strong> (<em>array</em>) – Covariance matrix</li>
-<li><strong>occurences</strong> (<em>array</em>) – How many other signals each signal is
-similar to.</li>
-</ul>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pyvib.stats.maximizeUncorrelatedSignals">
-<code class="descclassname">pyvib.stats.</code><code class="descname">maximizeUncorrelatedSignals</code><span class="sig-paren">(</span><em>A</em>, <em>tol=0.9</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.maximizeUncorrelatedSignals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Maximize number of signals such that all are uncorrelated
-according to the tolerance.</p>
-<dl class="docutils">
-<dt>A <span class="classifier-delimiter">:</span> <span class="classifier">array, or list of arrays</span></dt>
-<dd>[m,n] array with m observatios and n signals.
-If list, n must be equal on all arrays</dd>
-<dt>tol <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
-<dd>Tolerance for covariance</dd>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>EHNR</strong> – The EHNR value</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pyvib.stats.percentile">
-<code class="descclassname">pyvib.stats.</code><code class="descname">percentile</code><span class="sig-paren">(</span><em>v</em>, <em>p</em>, <em>w=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.percentile" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.stats.armodel">
+<span class="sig-prename descclassname"><span class="pre">pyvib.stats.</span></span><span class="sig-name descname"><span class="pre">armodel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Crit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.armodel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function tries to remove stationary signals by estimating an
+autoregressive model on the vibration signal. Afterwards this estiamte can
+be subtracted from the original signal using arresidual()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>float 1D array</em>) – Vibration data.</p></li>
+<li><p><strong>p</strong> (<em>int</em>) – Maximum number of filter coefficients</p></li>
+<li><p><strong>Crit</strong> (<em>int</em><em>, </em><em>optional</em>) – <p>Criterion for choosing optimal p:</p>
+<ul>
+<li><p>0 uses Akaike Information Criterium (AICc)</p></li>
+<li><p>1 uses Bayesian Information Criterium (BIC)</p></li>
+</ul>
+</p></li>
+<li><p><strong>debug</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Choose if debug information should be returned</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>aopt</strong> (<em>float 1D array</em>) – Optimal AR model parameters</p></li>
+<li><p><strong>popt</strong> (<em>int</em>) – Optimal model order</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pyvib.stats.arresidual" title="pyvib.stats.arresidual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arresidual</span></code></a>, <a class="reference internal" href="#pyvib.stats.arresponse" title="pyvib.stats.arresponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arresponse</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.stats.arresidual">
+<span class="sig-prename descclassname"><span class="pre">pyvib.stats.</span></span><span class="sig-name descname"><span class="pre">arresidual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.arresidual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the residual of the autoregressive model with coefficients a</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>float 1D array</em>) – Time signal</p></li>
+<li><p><strong>y</strong> (<em>float 1D array</em>) – Signal to filter</p></li>
+<li><p><strong>a</strong> (<em>float 1D array</em>) – AR model coeffs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>t</strong> (<em>float 1D array</em>) – New time signal</p></li>
+<li><p><strong>y</strong> (<em>float 1D array</em>) – Filtered signal</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.stats.arresponse">
+<span class="sig-prename descclassname"><span class="pre">pyvib.stats.</span></span><span class="sig-name descname"><span class="pre">arresponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.arresponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the predicted response of the autoregressive model with coeffs a</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>float 1D array</em>) – Time signal</p></li>
+<li><p><strong>y</strong> (<em>float 1D array</em>) – Signal</p></li>
+<li><p><strong>a</strong> (<em>float 1D array</em>) – AR model coeffs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>t</strong> (<em>float 1D array</em>) – New time signal</p></li>
+<li><p><strong>y</strong> (<em>float 1D array</em>) – Filtered signal</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.stats.covariance">
+<span class="sig-prename descclassname"><span class="pre">pyvib.stats.</span></span><span class="sig-name descname"><span class="pre">covariance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printSingular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipSignals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.covariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the covariance of columns in matrix A</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>array</em>) – [m,n] array with m observatios and n signals.</p></li>
+<li><p><strong>printSingular</strong> (<em>bool</em><em>, </em><em>optional</em>) – Print list of singular signals</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>rho</strong> (<em>array</em>) – Covariance matrix</p></li>
+<li><p><strong>occurences</strong> (<em>array</em>) – How many other signals each signal is
+similar to.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.stats.maximizeUncorrelatedSignals">
+<span class="sig-prename descclassname"><span class="pre">pyvib.stats.</span></span><span class="sig-name descname"><span class="pre">maximizeUncorrelatedSignals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.maximizeUncorrelatedSignals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximize number of signals such that all are uncorrelated
+according to the tolerance.</p>
+<dl class="simple">
+<dt>A<span class="classifier">array, or list of arrays</span></dt><dd><p>[m,n] array with m observatios and n signals.
+If list, n must be equal on all arrays</p>
+</dd>
+<dt>tol<span class="classifier">float, optional</span></dt><dd><p>Tolerance for covariance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.stats.percentile">
+<span class="sig-prename descclassname"><span class="pre">pyvib.stats.</span></span><span class="sig-name descname"><span class="pre">percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.percentile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the p percentile of a PDF with weights w and values v
 0.0 &lt;= p &lt;= w.sum
 if w is None, w.sum == 1.0</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>v</strong> (<em>float 1D array</em>) – Value samples</li>
-<li><strong>p</strong> (<em>float</em>) – Percentile</li>
-<li><strong>w</strong> (<em>float 1D array</em><em>, </em><em>optional</em>) – Weights of the value samples</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v</strong> (<em>float 1D array</em>) – Value samples</p></li>
+<li><p><strong>p</strong> (<em>float</em>) – Percentile</p></li>
+<li><p><strong>w</strong> (<em>float 1D array</em><em>, </em><em>optional</em>) – Weights of the value samples</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>percentile</strong> – The percentile</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>percentile</strong> – The percentile</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pyvib.stats.spearman">
-<code class="descclassname">pyvib.stats.</code><code class="descname">spearman</code><span class="sig-paren">(</span><em>x1</em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.spearman" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.stats.spearman">
+<span class="sig-prename descclassname"><span class="pre">pyvib.stats.</span></span><span class="sig-name descname"><span class="pre">spearman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.stats.spearman" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the spearman coefficient of input x1 np.array
 Assumes the comparison vector is linearly increasing.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x1</strong> (<em>float 1D array</em>) – The signal to calculate Spearman coefficient of</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>spearman</strong> – Spearman coefficient</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x1</strong> (<em>float 1D array</em>) – The signal to calculate Spearman coefficient of</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>spearman</strong> – Spearman coefficient</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -278,17 +254,15 @@ Assumes the comparison vector is linearly increasing.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -308,12 +282,13 @@ Assumes the comparison vector is linearly increasing.</p>
         <li class="right" >
           <a href="linalg.html" title="Linear algebra"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Statistical functions</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andreas Klausen.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
     </div>
   </body>
 </html>
