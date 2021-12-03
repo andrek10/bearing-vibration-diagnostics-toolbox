@@ -1,55 +1,90 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Signal features &#8212; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
-    
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signal features &mdash; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bearing functions" href="bearing.html" />
     <link rel="prev" title="Filters" href="filter.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="bearing.html" title="Bearing functions"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="filter.html" title="Filters"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Signal features</a></li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bearing Vibration Diagnostics Toolbox
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft.html">Fourier transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Signal features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bearing.html">Bearing functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plt.html">Plotting funtions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnose.html">Diagnose functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Statistical functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="particlefilter.html">Particle filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acoustics.html">Acoustics functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bearing Vibration Diagnostics Toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Signal features</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/features.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="module-pyvib.features">
-<span id="signal-features"></span><h1>Signal features<a class="headerlink" href="#module-pyvib.features" title="Permalink to this headline">¶</a></h1>
+<span id="signal-features"></span><h1>Signal features<a class="headerlink" href="#module-pyvib.features" title="Permalink to this headline"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.LOG">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">LOG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.LOG" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">LOG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.LOG" title="Permalink to this definition"></a></dt>
 <dd><p>Exponential of the mean absolute logarithm</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -60,7 +95,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.SDofIHC">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">SDofIHC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.SDofIHC" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">SDofIHC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.SDofIHC" title="Permalink to this definition"></a></dt>
 <dd><p>Standard deviation of inverse hyperbolic cosine</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -76,7 +111,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.SDofIHS">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">SDofIHS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.SDofIHS" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">SDofIHS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.SDofIHS" title="Permalink to this definition"></a></dt>
 <dd><p>Standard deviation of inverse hyperbolic sine</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -92,7 +127,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.absoluteMean">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">absoluteMean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.absoluteMean" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">absoluteMean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.absoluteMean" title="Permalink to this definition"></a></dt>
 <dd><p>Get absolute mean of signal</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -103,7 +138,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.approximateEntropy">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">approximateEntropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.approximateEntropy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">approximateEntropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.approximateEntropy" title="Permalink to this definition"></a></dt>
 <dd><p>Approximate the entropy of a signal</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -126,7 +161,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.bearingEnergy">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">bearingEnergy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bearing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.bearingEnergy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">bearingEnergy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bearing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.bearingEnergy" title="Permalink to this definition"></a></dt>
 <dd><p>Energy within band of typical characteristic frequencies</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -146,7 +181,7 @@ bearing[3] - Outer race frequency</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.clearanceFactor">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">clearanceFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.clearanceFactor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">clearanceFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.clearanceFactor" title="Permalink to this definition"></a></dt>
 <dd><p>Clearance factor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -157,7 +192,7 @@ bearing[3] - Outer race frequency</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.crestFactor">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">crestFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.crestFactor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">crestFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.crestFactor" title="Permalink to this definition"></a></dt>
 <dd><p>Crest factor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -168,7 +203,7 @@ bearing[3] - Outer race frequency</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.frequencyCenter">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">frequencyCenter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.frequencyCenter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">frequencyCenter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.frequencyCenter" title="Permalink to this definition"></a></dt>
 <dd><p>Frequency center of spectrum</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -182,7 +217,7 @@ bearing[3] - Outer race frequency</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.impulseFactor">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">impulseFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.impulseFactor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">impulseFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.impulseFactor" title="Permalink to this definition"></a></dt>
 <dd><p>Impulse factor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -193,7 +228,7 @@ bearing[3] - Outer race frequency</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.kurtosis">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">kurtosis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.kurtosis" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">kurtosis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.kurtosis" title="Permalink to this definition"></a></dt>
 <dd><p>Get kurtosis value</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -210,7 +245,7 @@ bearing[3] - Outer race frequency</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.kurtosisFactor">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">kurtosisFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.kurtosisFactor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">kurtosisFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.kurtosisFactor" title="Permalink to this definition"></a></dt>
 <dd><p>Kurtosis factor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -221,7 +256,7 @@ bearing[3] - Outer race frequency</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.maxToMinPowerDensityDrop">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">maxToMinPowerDensityDrop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bearing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.maxToMinPowerDensityDrop" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">maxToMinPowerDensityDrop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bearing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.maxToMinPowerDensityDrop" title="Permalink to this definition"></a></dt>
 <dd><p>Maximum to minimum power density drop</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -241,7 +276,7 @@ bearing[3] - Outer race frequency</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.medianFrequency">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">medianFrequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.medianFrequency" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">medianFrequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.medianFrequency" title="Permalink to this definition"></a></dt>
 <dd><p>Median frequency of a spectrum</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -255,7 +290,7 @@ bearing[3] - Outer race frequency</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.myoPulsePercentage">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">myoPulsePercentage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.myoPulsePercentage" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">myoPulsePercentage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.myoPulsePercentage" title="Permalink to this definition"></a></dt>
 <dd><p>Myo pulse percentage
 Sum of all impulses greater than a threshold eps</p>
 <dl class="field-list simple">
@@ -270,7 +305,7 @@ Sum of all impulses greater than a threshold eps</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.peakToPeak">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">peakToPeak</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.peakToPeak" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">peakToPeak</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.peakToPeak" title="Permalink to this definition"></a></dt>
 <dd><p>Peak-to-peak of signal</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -281,7 +316,7 @@ Sum of all impulses greater than a threshold eps</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.rms">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">rms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.rms" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">rms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.rms" title="Permalink to this definition"></a></dt>
 <dd><p>Get RMS vlaue</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -298,7 +333,7 @@ Sum of all impulses greater than a threshold eps</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.rootMeanSquareFrequency">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">rootMeanSquareFrequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.rootMeanSquareFrequency" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">rootMeanSquareFrequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.rootMeanSquareFrequency" title="Permalink to this definition"></a></dt>
 <dd><p>Root mean square frequency</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -312,7 +347,7 @@ Sum of all impulses greater than a threshold eps</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.shapeFactor">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">shapeFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.shapeFactor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">shapeFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.shapeFactor" title="Permalink to this definition"></a></dt>
 <dd><p>Shape factor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -323,7 +358,7 @@ Sum of all impulses greater than a threshold eps</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.skewnessFactor">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">skewnessFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.skewnessFactor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">skewnessFactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.skewnessFactor" title="Permalink to this definition"></a></dt>
 <dd><p>Skewness factor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -334,7 +369,7 @@ Sum of all impulses greater than a threshold eps</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.slopeSignChange">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">slopeSignChange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.slopeSignChange" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">slopeSignChange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.slopeSignChange" title="Permalink to this definition"></a></dt>
 <dd><p>Slope sign change</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -352,7 +387,7 @@ IEEE Sensors Journal 17.17 (2017): 5618-5625.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.snr">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">snr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_ech</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.snr" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">snr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">md</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_ech</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.snr" title="Permalink to this definition"></a></dt>
 <dd><p>Estimates the Signal-to-noise ratio.</p>
 <p>Based on “About periodicity and signal to noise ratio - The
 strength of the autocorrelation function.”
@@ -401,7 +436,7 @@ by Nadine Martin and Corinne Mailhes</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.squareMeanRoot">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">squareMeanRoot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.squareMeanRoot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">squareMeanRoot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.squareMeanRoot" title="Permalink to this definition"></a></dt>
 <dd><p>Square mean root of signal</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -412,7 +447,7 @@ by Nadine Martin and Corinne Mailhes</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.standardmoment">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">standardmoment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.standardmoment" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">standardmoment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.standardmoment" title="Permalink to this definition"></a></dt>
 <dd><p>Get standard moment of choice</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -428,7 +463,7 @@ by Nadine Martin and Corinne Mailhes</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.waveformLength">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">waveformLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.waveformLength" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">waveformLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.waveformLength" title="Permalink to this definition"></a></dt>
 <dd><p>Waveform length of signal</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -445,7 +480,7 @@ IEEE Sensors Journal 17.17 (2017): 5618-5625.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.willsonAmplitude">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">willsonAmplitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.willsonAmplitude" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">willsonAmplitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.willsonAmplitude" title="Permalink to this definition"></a></dt>
 <dd><p>Willson amplitude</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -462,7 +497,7 @@ IEEE Sensors Journal 17.17 (2017): 5618-5625.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.features.zeroCrossing">
-<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">zeroCrossing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.zeroCrossing" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.features.</span></span><span class="sig-name descname"><span class="pre">zeroCrossing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.features.zeroCrossing" title="Permalink to this definition"></a></dt>
 <dd><p>Zero crossing og signal</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -481,61 +516,34 @@ IEEE Sensors Journal 17.17 (2017): 5618-5625.</p></li>
 </section>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="filter.html" class="btn btn-neutral float-left" title="Filters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bearing.html" class="btn btn-neutral float-right" title="Bearing functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Andreas Klausen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="filter.html"
-                        title="previous chapter">Filters</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="bearing.html"
-                        title="next chapter">Bearing functions</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/features.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="bearing.html" title="Bearing functions"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="filter.html" title="Filters"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Signal features</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Andreas Klausen.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

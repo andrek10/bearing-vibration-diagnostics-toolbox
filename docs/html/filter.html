@@ -1,56 +1,91 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Filters &#8212; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
-    
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filters &mdash; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Signal features" href="features.html" />
     <link rel="prev" title="Fourier transforms" href="fft.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="features.html" title="Signal features"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="fft.html" title="Fourier transforms"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Filters</a></li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bearing Vibration Diagnostics Toolbox
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft.html">Fourier transforms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Signal features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bearing.html">Bearing functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plt.html">Plotting funtions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnose.html">Diagnose functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Statistical functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="particlefilter.html">Particle filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acoustics.html">Acoustics functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bearing Vibration Diagnostics Toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Filters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/filter.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="module-pyvib.filter">
-<span id="filters"></span><h1>Filters<a class="headerlink" href="#module-pyvib.filter" title="Permalink to this headline">¶</a></h1>
+<span id="filters"></span><h1>Filters<a class="headerlink" href="#module-pyvib.filter" title="Permalink to this headline"></a></h1>
 <p>Filer design</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="pyvib.filter.IIRFilter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">IIRFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.IIRFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">IIRFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.IIRFilter" title="Permalink to this definition"></a></dt>
 <dd><p>An IIR filter object that can update per sample.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -69,7 +104,7 @@
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyvib.filter.IIRFilter.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.IIRFilter.update" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.IIRFilter.update" title="Permalink to this definition"></a></dt>
 <dd><p>Updates the filter with a new sample</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -88,7 +123,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.blinddeconvolution">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">blinddeconvolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">part</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxIter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopCrit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.blinddeconvolution" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">blinddeconvolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">part</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxIter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopCrit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.blinddeconvolution" title="Permalink to this definition"></a></dt>
 <dd><p>Iteratively identifies a filter g that deconvolves the filter h
 originally applied to z to return the deconvolved signal x.
 The iterator tries to maximize the kurtosis (impulsivity) of the
@@ -121,7 +156,7 @@ Must be within &lt;0, 1&gt;</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.cpw">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">cpw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.cpw" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">cpw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.cpw" title="Permalink to this definition"></a></dt>
 <dd><blockquote>
 <div><p>Removes synchronous parts of a signal using Cepstrum Pre-Whitening</p>
 </div></blockquote>
@@ -135,7 +170,7 @@ Must be within &lt;0, 1&gt;</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.decimate">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">decimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimatelist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.decimate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">decimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimatelist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.decimate" title="Permalink to this definition"></a></dt>
 <dd><p>Apply decimation of a signal y with time t by applying an IIR filter
 with the decimation factor given by all items in decimatelist</p>
 <dl class="field-list simple">
@@ -160,7 +195,7 @@ with the decimation factor given by all items in decimatelist</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.filterbank_compose">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">filterbank_compose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xbank</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsizes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterbank_compose" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">filterbank_compose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xbank</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsizes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterbank_compose" title="Permalink to this definition"></a></dt>
 <dd><p>Recompose the filter bank to a single signal</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -186,7 +221,7 @@ x_hat[lag:-lag] approximates x[0:-lag*2]</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.filterbank_decompose">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">filterbank_decompose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterbank_decompose" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">filterbank_decompose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterbank_decompose" title="Permalink to this definition"></a></dt>
 <dd><p>Decompose a signal using supplied filters for a certain numebr of levels</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -216,7 +251,7 @@ Only needed for recomposing using filterbank_compose()</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.filterdesign">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">filterdesign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Yh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterdesign" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">filterdesign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Yh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterdesign" title="Permalink to this definition"></a></dt>
 <dd><p>Design a FIR filter that matches a frequency response</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -234,7 +269,7 @@ Only needed for recomposing using filterbank_compose()</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.get_decimatelist">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">get_decimatelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desireddecimation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxdec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_decimatelist" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">get_decimatelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desireddecimation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxdec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_decimatelist" title="Permalink to this definition"></a></dt>
 <dd><p>Generate a decimation list for using the decimate function</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -261,7 +296,7 @@ Defaults to 12</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.get_filterbankfilters">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">get_filterbankfilters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_filterbankfilters" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">get_filterbankfilters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_filterbankfilters" title="Permalink to this definition"></a></dt>
 <dd><p>Make filters for filterbank decomposition and recomposition
 These are even order FIR filters</p>
 <dl class="field-list simple">
@@ -282,7 +317,7 @@ These are even order FIR filters</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.get_filterbankfilters_kurtogram">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">get_filterbankfilters_kurtogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_filterbankfilters_kurtogram" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">get_filterbankfilters_kurtogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_filterbankfilters_kurtogram" title="Permalink to this definition"></a></dt>
 <dd><p>Acquire the filterbank filters used in:
 Antoni, Jerome. “Fast computation of the kurtogram for the detection of transient faults.”
 Mechanical Systems and Signal Processing 21.1 (2007): 108-124.</p>
@@ -302,7 +337,7 @@ Mechanical Systems and Signal Processing 21.1 (2007): 108-124.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.filter.waveletfilter">
-<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">waveletfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.waveletfilter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">waveletfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.waveletfilter" title="Permalink to this definition"></a></dt>
 <dd><p>Constructs the frequency transformed wavelet filter. Can be used to
 filter a frequency transformed signal by taking Y*Ksi.</p>
 <dl class="field-list simple">
@@ -326,61 +361,34 @@ filter a frequency transformed signal by taking Y*Ksi.</p>
 </section>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fft.html" class="btn btn-neutral float-left" title="Fourier transforms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="features.html" class="btn btn-neutral float-right" title="Signal features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Andreas Klausen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="fft.html"
-                        title="previous chapter">Fourier transforms</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="features.html"
-                        title="next chapter">Signal features</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/filter.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="features.html" title="Signal features"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="fft.html" title="Fourier transforms"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Filters</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Andreas Klausen.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

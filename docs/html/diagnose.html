@@ -1,56 +1,91 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Diagnose functions &#8212; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
-    
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnose functions &mdash; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Linear algebra" href="linalg.html" />
     <link rel="prev" title="Plotting funtions" href="plt.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="linalg.html" title="Linear algebra"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="plt.html" title="Plotting funtions"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Diagnose functions</a></li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bearing Vibration Diagnostics Toolbox
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft.html">Fourier transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Signal features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bearing.html">Bearing functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plt.html">Plotting funtions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Diagnose functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Statistical functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="particlefilter.html">Particle filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acoustics.html">Acoustics functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bearing Vibration Diagnostics Toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Diagnose functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/diagnose.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="module-pyvib.diagnose">
-<span id="diagnose-functions"></span><h1>Diagnose functions<a class="headerlink" href="#module-pyvib.diagnose" title="Permalink to this headline">¶</a></h1>
+<span id="diagnose-functions"></span><h1>Diagnose functions<a class="headerlink" href="#module-pyvib.diagnose" title="Permalink to this headline"></a></h1>
 <p>diagnose</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.diagnose.ES_SVD">
-<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">ES_SVD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_fault</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PMItreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func=&lt;function</span> <span class="pre">get_SVDxi&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func_params=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.ES_SVD" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">ES_SVD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_fault</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PMItreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func=&lt;function</span> <span class="pre">get_SVDxi&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func_params=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.ES_SVD" title="Permalink to this definition"></a></dt>
 <dd><p>Envelope Score - SVD
 Get PMI and weights for each fault frequency in f_fault
 Based on envelope FFT score</p>
@@ -84,7 +119,7 @@ None for no extra input</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.diagnose.R_SVD">
-<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">R_SVD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_fault</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance=0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PMItreshold=1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func=&lt;function</span> <span class="pre">get_SVDxi&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func_params=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.R_SVD" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">R_SVD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_fault</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance=0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PMItreshold=1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func=&lt;function</span> <span class="pre">get_SVDxi&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimate_xi_func_params=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.R_SVD" title="Permalink to this definition"></a></dt>
 <dd><p>Get PMI and weights for each fault frequency in f_fault
 Based on the R-SVD algorithm in paper:
 “A novel strategy for signal denoising using reweighted SVD and
@@ -119,7 +154,7 @@ None for no extra input</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.diagnose.diagnosefft">
-<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">diagnosefft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subband</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">harmthreshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subthreshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.diagnosefft" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">diagnosefft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subband</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">harmthreshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subthreshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.diagnosefft" title="Permalink to this definition"></a></dt>
 <dd><blockquote>
 <div><p>Diagnose a spectrum for bearing faults. Returns a score</p>
 </div></blockquote>
@@ -145,7 +180,7 @@ Score for fault being present</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyvib.diagnose.diagnosevibrationfft">
-<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">diagnosevibrationfft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bearing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.diagnosevibrationfft" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyvib.diagnose.</span></span><span class="sig-name descname"><span class="pre">diagnosevibrationfft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bearing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.diagnose.diagnosevibrationfft" title="Permalink to this definition"></a></dt>
 <dd><blockquote>
 <div><p>Diagnose a spectrum for all three fault types</p>
 </div></blockquote>
@@ -168,61 +203,34 @@ Score for fault being present</p>
 </section>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plt.html" class="btn btn-neutral float-left" title="Plotting funtions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="linalg.html" class="btn btn-neutral float-right" title="Linear algebra" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Andreas Klausen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="plt.html"
-                        title="previous chapter">Plotting funtions</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="linalg.html"
-                        title="next chapter">Linear algebra</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/diagnose.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="linalg.html" title="Linear algebra"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="plt.html" title="Plotting funtions"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Bearing Vibration Diagnostics Toolbox 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Diagnose functions</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Andreas Klausen.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
