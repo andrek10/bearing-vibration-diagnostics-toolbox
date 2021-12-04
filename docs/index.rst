@@ -11,6 +11,7 @@ Indices and tables
     :maxdepth: 3
     :caption: Contents:
 
+    gettingstarted
     signal
     fft
     filter
@@ -23,3 +24,4 @@ Indices and tables
     particlefilter
     acoustics
     misc
+    publications

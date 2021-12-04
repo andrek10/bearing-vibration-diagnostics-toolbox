@@ -366,6 +366,7 @@ def _getregime(meanv, speedregimes):
     chosenregime : int
         Index determining which regime the mean speed belongs to
 	'''
+
     return np.argmax(np.greater(meanv, speedregimes[:-1]) * np.less(meanv, speedregimes[1:]))
 
 def generalized_synchronous_average(t, vib, t_s, s, R, ds=None):
@@ -514,7 +515,7 @@ def downsample(s, n, phase=0):
 
     return s[phase::n]
 
-def teager(x):
+def teager(vib):
     '''
     Compute the teager energy operator
 
@@ -528,6 +529,7 @@ def teager(x):
     x_teager : float 1D array
         Teager energy operator
     '''
+
     return vib[1:-1]*vib[1:-1] - vib[:-2]*vib[2:]
 
 @njit(cache=True)

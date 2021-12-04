@@ -1,5 +1,7 @@
-"""diagnose
 """
+
+"""
+
 import numpy as np
 
 from .fft import fft
