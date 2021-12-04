@@ -1,3 +1,7 @@
+"""
+Different features that can be calculated with the vibration signal
+"""
+
 from math import log
 
 import matplotlib.pyplot as plt

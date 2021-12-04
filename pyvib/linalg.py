@@ -1,6 +1,7 @@
-'''
-linalg
-'''
+"""
+Linear algebra
+"""
+
 import numpy as np
 from numba import njit
 from scipy.linalg import hankel

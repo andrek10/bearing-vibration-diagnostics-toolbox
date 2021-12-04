@@ -1,5 +1,7 @@
-'''Filer design
-'''
+"""
+Filer design
+"""
+
 import numpy as np
 from scipy.linalg import solve_toeplitz
 from scipy.signal import decimate as scipydecimate

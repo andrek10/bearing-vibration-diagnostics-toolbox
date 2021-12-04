@@ -1,5 +1,5 @@
 """
-
+Functions related to bearing diagnosis
 """
 
 import numpy as np
@@ -20,9 +20,11 @@ def R_SVD(U, sigma, V, time, f_fault, tolerance = 0.02, PMItreshold = 1.0, estim
     Parameters
     ----------
     U : array 2D float
+        U array from SVD
     sigma : array 1D float
         The singular values
     V : array 2D float
+        V array from SVD
     time : array 1D float
         The time of the signal before SVD is computed
     f_fault : list or array_like
@@ -104,9 +106,11 @@ def ES_SVD(U, sigma, V, time, f_fault, f_side, PMItreshold, estimate_xi_func=get
     Parameters
     ----------
     U : array 2D float
+        U array from SVD
     sigma : array 1D float
         The singular values
     V : array 2D float
+        V array from SVD
     time : array 1D float
         The time of the signal before SVD is computed
     f_fault : list or array_like

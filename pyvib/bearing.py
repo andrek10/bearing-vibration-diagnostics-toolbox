@@ -1,6 +1,5 @@
 """
-bearing
-
+Functions related to i.e. bearing lifetime and geometry
 """
 
 import numpy as np

@@ -1,5 +1,5 @@
 '''
-signal.py
+Signal processing algorithms
 '''
 
 from math import exp, pi, sqrt
