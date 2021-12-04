@@ -24,6 +24,8 @@ project = 'Bearing Vibration Diagnostics Toolbox'
 copyright = '2021, Andreas Klausen'
 author = 'Andreas Klausen'
 
+html_favicon = 'bearing.svg'
+
 # The short X.Y version
 version = '1.0'
 # The full version, including alpha/beta/rc tags
