@@ -10,7 +10,7 @@ from .signal import envelope, fftwconvolve
 
 
 def R_SVD(U, sigma, V, time, f_fault, tolerance = 0.02, PMItreshold = 1.0, estimate_xi_func=get_SVDxi, estimate_xi_func_params=None):
-    '''
+    """
     Get PMI and weights for each fault frequency in f_fault
     Based on the R-SVD algorithm in paper:
     "A novel strategy for signal denoising using reweighted SVD and
@@ -47,7 +47,7 @@ def R_SVD(U, sigma, V, time, f_fault, tolerance = 0.02, PMItreshold = 1.0, estim
         PMI for each fault period
     W : list of 1D array
         Wights for each fault period
-    '''
+    """
 
     # Get the search region
     m = sigma.size
@@ -86,19 +86,19 @@ def R_SVD(U, sigma, V, time, f_fault, tolerance = 0.02, PMItreshold = 1.0, estim
             # print(R_a[481:501])
             R_T = np.max(R_a[T0[k]:T1[k]])
             PMI[k][i] = R_T/(R_0 - R_T)
-    
+
     # Calculate weights
     for k in range(0, f_fault.size):
         temp = np.sum(PMI[k])
         for i in range(0, m):
             if PMI[k][i] > PMItreshold:
                 W[k][i] = PMI[k][i]/temp
-    
+
     # Return data
     return PMI, W
 
 def ES_SVD(U, sigma, V, time, f_fault, f_side, PMItreshold, estimate_xi_func=get_SVDxi, estimate_xi_func_params=None):
-    '''
+    """
     Envelope Score - SVD
     Get PMI and weights for each fault frequency in f_fault
     Based on envelope FFT score
@@ -134,7 +134,7 @@ def ES_SVD(U, sigma, V, time, f_fault, f_side, PMItreshold, estimate_xi_func=get
         PMI for each fault period
     W : list of 1D array
         Wights for each fault period
-    '''
+    """
 
     # Get the search region
     m = sigma.size
@@ -159,7 +159,7 @@ def ES_SVD(U, sigma, V, time, f_fault, f_side, PMItreshold, estimate_xi_func=get
         # Calculate PMI for each fault type
         for k in range(0, f_fault.size):
             PMI[k][i] = diagnosefft(Y, df, f_fault[k], 1.0, f_side[k])
-    
+
     # Calculate weights
     for k in range(0, f_fault.size):
         temp = 0.0
@@ -169,14 +169,14 @@ def ES_SVD(U, sigma, V, time, f_fault, f_side, PMItreshold, estimate_xi_func=get
         for i in range(0, m):
             if PMI[k][i] > PMItreshold:
                 W[k][i] = PMI[k][i]/temp
-    
+
     # Return data
     return PMI, W
 
 def diagnosefft(Y, df, charf, X, subband, debug=False, version=2, harmthreshold=3.0, subthreshold=3.0):
     """
 	Diagnose a spectrum for bearing faults. Returns a score
-	
+
 	Parameters
 	----------
     Y : float 1D array
@@ -193,7 +193,7 @@ def diagnosefft(Y, df, charf, X, subband, debug=False, version=2, harmthreshold=
         Whether debug information is returned
     version : int, optional
         Which version of this script to run. Default 2 with new noise estimator
-	
+
 	Returns
 	-------
 	score : float
@@ -291,7 +291,7 @@ def diagnosefft(Y, df, charf, X, subband, debug=False, version=2, harmthreshold=
                     return score, subbandsNeg, subbandsPos, negSubBand, posSubBand, harmonics, noises, scores
                 else:
                     return score
-        
+
         #Check if FFT is too short. If so, return what is done!
         test1 = int((nHarm*charf+0.02*charf)/df)
         test2 = int((nHarm*charf + subband + 0.05)/df)
@@ -300,11 +300,11 @@ def diagnosefft(Y, df, charf, X, subband, debug=False, version=2, harmthreshold=
                 return score, subbandsNeg, subbandsPos, negSubBand, posSubBand, harmonics, noises, scores
             else:
                 return score
-                      
+
 def diagnosevibrationfft(Y, df, X, bearing, radial=True):
     """
 	Diagnose a spectrum for all three fault types
-	
+
 	Parameters
 	----------
     Y : float 1D array
@@ -317,7 +317,7 @@ def diagnosevibrationfft(Y, df, X, bearing, radial=True):
         Bearing characteristic orders (inner,roller,cage,outer)
     radial : boolean, optional
         Whether radial forces exists. If so, sidebands exists
-	
+
 	Returns
 	-------
     scores : float 1D array
@@ -340,13 +340,13 @@ def diagnosevibrationfft(Y, df, X, bearing, radial=True):
             else:
                 f_sb[i] = 0.0
             # Cage
-            
+
         elif i == 2: #Outer ring
             f_c[i] = bearing[3]
             f_sb[i] = 0.0
-    
+
     for j in range(0, 3):
         tempScore = diagnosefft(Y, df, f_c[j], X, f_sb[j])
         score[j] += tempScore
-                
+
     return score

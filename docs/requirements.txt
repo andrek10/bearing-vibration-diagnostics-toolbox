@@ -11,3 +11,6 @@ sphinx
 sphinx-rtd-theme
 sphinxcontrib-bibtex
 sphinx-autobuild
+rstcheck
+sphinx-autodoc-typehints
+numpydoc

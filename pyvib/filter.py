@@ -14,7 +14,7 @@ from .signal import fftwconvolve
 
 
 def get_filterbankfilters(N, fc=0.25):
-    '''
+    """
     Make filters for filterbank decomposition and recomposition
     These are even order FIR filters
 
@@ -29,8 +29,8 @@ def get_filterbankfilters(N, fc=0.25):
     -------
     f0, f1, h0, h1 : arrays of float
         The filter kernels
-    '''
-    
+    """
+
     # N must to even to make the best filter!
     assert N % 2 == 0
 
@@ -46,23 +46,23 @@ def get_filterbankfilters(N, fc=0.25):
     return h0, h1, f0, f1
 
 def get_filterbankfilters_kurtogram(N=16):
-    '''
+    """
     Acquire the filterbank filters used in:
-    Antoni, Jerome. "Fast computation of the kurtogram for the detection of transient faults." 
+    Antoni, Jerome. "Fast computation of the kurtogram for the detection of transient faults."
     Mechanical Systems and Signal Processing 21.1 (2007): 108-124.
 
     Parameters
     ----------
     N : int
         Number of filterbank coefficients
-    
+
     Returns
     -------
     h : float 1D array
         Lowpass filter
     g : float 1D array
         Highpass filter
-    '''
+    """
 
     fc = 0.4
     h = firwin(N+1,fc)*np.exp(2*1j*np.pi*np.arange(0, N+1)*0.125)
@@ -88,7 +88,7 @@ def _fbcompose(x0, x1, f0, f1, xsize):
     return y0+y1
 
 def filterbank_decompose(x, h0, h1, level):
-    '''
+    """
     Decompose a signal using supplied filters for a certain numebr of levels
 
     Parameters
@@ -106,15 +106,15 @@ def filterbank_decompose(x, h0, h1, level):
     xbank : list of float 1D arrays
         The filter-bank coefficients ranging from lowest frequency to highest frequency
     xsizes : list of lists of integers
-        The sizes of signals before decomposing. 
+        The sizes of signals before decomposing.
         Only needed for recomposing using filterbank_compose()
 
     See also
     --------
     get_filterbankfilters() : Makes the h0 and h1 filter kernel
     filterbank_compose() : Re-combposes an xbank into a signal
-    '''
-    
+    """
+
     xbank = [x,]
     xsizes = []
     for i in range(0, level):
@@ -129,7 +129,7 @@ def filterbank_decompose(x, h0, h1, level):
     return xbank, xsizes
 
 def filterbank_compose(xbank, f0, f1, xsizes):
-    '''
+    """
     Recompose the filter bank to a single signal
 
     Parameters
@@ -150,8 +150,8 @@ def filterbank_compose(xbank, f0, f1, xsizes):
         The lag of the recomposed signal
         Should ideally use x_hat[lag:-lag] after recomposition
         x_hat[lag:-lag] approximates x[0:-lag*2]
-    '''
-    
+    """
+
     level = int(np.log2(len(xbank)))
     for i in range(0, level):
         xbank_new = []
@@ -162,9 +162,9 @@ def filterbank_compose(xbank, f0, f1, xsizes):
         xbank = xbank_new
     lag = int(2**level - 1)
     return xbank[0], lag
-    
+
 def waveletfilter(f0, sigma, Fs, N):
-    '''
+    """
     Constructs the frequency transformed wavelet filter. Can be used to
     filter a frequency transformed signal by taking Y*Ksi.
 
@@ -183,8 +183,8 @@ def waveletfilter(f0, sigma, Fs, N):
     -------
     Ksi : float 1D array
         Filter in the frequency domain.
-    '''
-    
+    """
+
     dt = 1.0/Fs
     T = dt*float(N)
     df = 1.0/T
@@ -194,8 +194,8 @@ def waveletfilter(f0, sigma, Fs, N):
     return Ksi
 
 def blinddeconvolution(z, L, part=1.0, k=4.0, maxIter=1000, maxMu=2.0, stopCrit=0.01, debug=False):
-    '''
-    Iteratively identifies a filter g that deconvolves the filter h 
+    """
+    Iteratively identifies a filter g that deconvolves the filter h
     originally applied to z to return the deconvolved signal x.
     The iterator tries to maximize the kurtosis (impulsivity) of the
     deconvolved signal.
@@ -226,8 +226,8 @@ def blinddeconvolution(z, L, part=1.0, k=4.0, maxIter=1000, maxMu=2.0, stopCrit=
     -------
     gNew : float 1D array
         Filter kernel that deconvolves the signal
-    '''
-    
+    """
+
     temp = np.ones(L)
     temp[::2] *= -1.0
     gNew = temp*np.random.rand(L)
@@ -266,7 +266,7 @@ def blinddeconvolution(z, L, part=1.0, k=4.0, maxIter=1000, maxMu=2.0, stopCrit=
     return gNew
 
 def filterdesign(Yh, M, plot=True):
-    '''
+    """
     Design a FIR filter that matches a frequency response
 
     Parameters
@@ -282,7 +282,7 @@ def filterdesign(Yh, M, plot=True):
     --------
     h : float 1D array
         The designed FIR filter kernel
-    '''
+    """
 
     if M % 2 != 0:
         M += 1
@@ -293,7 +293,7 @@ def filterdesign(Yh, M, plot=True):
 
     y = rawifft(Yh)
     f = np.fft.fftfreq(y.size)
-    
+
     h = np.zeros(M+1, dtype='complex')
     h[0:M//2] = y[-M//2:]
     h[M//2:M+1] = y[0:M+1-M//2]
@@ -311,7 +311,7 @@ def filterdesign(Yh, M, plot=True):
     return h
 
 def decimate(y, decimatelist):
-    '''
+    """
     Apply decimation of a signal y with time t by applying an IIR filter
     with the decimation factor given by all items in decimatelist
 
@@ -330,7 +330,7 @@ def decimate(y, decimatelist):
     See Also
     --------
     get_decimatelist()
-    '''
+    """
 
     decimatelist = np.asarray(decimatelist, dtype=int)
     for i in range(0, decimatelist.size):
@@ -338,7 +338,7 @@ def decimate(y, decimatelist):
     return y
 
 def get_decimatelist(desireddecimation, maxdec=12, step=-1):
-    '''
+    """
     Generate a decimation list for using the decimate function
 
     Parameters
@@ -360,7 +360,7 @@ def get_decimatelist(desireddecimation, maxdec=12, step=-1):
     See Also
     --------
     decimate
-    '''
+    """
 
     desireddecimation = int(desireddecimation)
     if desireddecimation <= maxdec:
@@ -377,7 +377,7 @@ def get_decimatelist(desireddecimation, maxdec=12, step=-1):
     return decL
 
 def cpw(x):
-    '''
+    """
 	Removes synchronous parts of a signal using Cepstrum Pre-Whitening
 
 	Parameters
@@ -389,7 +389,7 @@ def cpw(x):
 	-------
     xPW : float 1D array
         Whitened signal
-    '''
+    """
 
     spec = rawfft(x - np.mean(x))
     spec[np.less(spec, 1e-15)] = 1e-15
@@ -404,16 +404,16 @@ def cpw(x):
 
 
 class IIRFilter():
-    '''
+    """
     An IIR filter object that can update per sample.
-	
+
     Parameters
     ----------
     b : float 1D array
         Filter coefficients
     a : float 1D array
         Filter coefficients
-    
+
     Object functions
     ----------------
     update() : Filter the next sample
@@ -421,8 +421,8 @@ class IIRFilter():
     See also
     --------
     scipy.signal.butter() - Create an IIR filter
-    '''
-	
+    """
+
     def __init__(self, b, a):
         self._M = a.size
         self._N = b.size
@@ -432,20 +432,20 @@ class IIRFilter():
         self._y = np.zeros(self._M)
         self._iters = 0
     def update(self, xin):
-        '''
+        """
         Updates the filter with a new sample
-        
+
         Parameters
         ----------
         xin : float
             The new sample
-        
+
         Returns
         -------
         xout : float
             The filtered sample
-        '''
-        
+        """
+
         if self._iters < self._M:
             # Initialize
             i = self._iters

@@ -13,7 +13,7 @@ setup(
     license='LICENSE.md',
     description='PyVib Python Library',
     install_requires=[
-        'numpy>=1.19.2',
+        'numpy>=1.17.0',
         'pyfftw>=0.12.0',
         'numba>=0.54.1',
         'scipy>=1.7.3',

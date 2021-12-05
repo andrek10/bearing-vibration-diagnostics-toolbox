@@ -9,7 +9,7 @@ from sklearn.utils.extmath import randomized_svd
 
 
 def SVD(x, m):
-    '''
+    """
     Produce the singular value decomposition of a signal
     Uses the scikit learn.randomized SVD function
 
@@ -30,14 +30,14 @@ def SVD(x, m):
     See also
     --------
     get_SVDxi - Use get to recombine a singular value back to time-domain
-    '''
+    """
 
     A = hankel(x[0:m], x[m-1:])
     U, sigma, V = randomized_svd(A, m)
     return U, sigma, V
-    
+
 def get_SVDxi(U, sigma, V, i):
-    '''
+    """
     Estimate the i'th singular value composition using the diagonal mean sum
 
     Parameters
@@ -48,7 +48,7 @@ def get_SVDxi(U, sigma, V, i):
     V : array 2D float
     i : int
         The i'th singular value to recompose. 0 < i < Sigma.size
-    '''
+    """
 
     Ai = sigma[i]*(U[:,i][:,None].dot(V[i,:][None,:]))
     m = Ai.shape[0]
@@ -59,9 +59,9 @@ def get_SVDxi(U, sigma, V, i):
 
 @njit(cache=True)
 def _get_SVDxiJit(Ai, xi, m, N):
-    '''
+    """
     JIT worker for get_SVDxi
-    '''
+    """
     for i in range(0, xi.size):
         kstart = N - xi.size + i - 1
         elems = 0

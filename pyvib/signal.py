@@ -1,6 +1,6 @@
-'''
+"""
 Signal processing algorithms
-'''
+"""
 
 from math import exp, pi, sqrt
 
@@ -15,7 +15,7 @@ nthreads = cpu_count(logical=False)
 pyfftw.interfaces.cache.enable()
 
 def envelope(y, absolute=True):
-    '''
+    """
     Get envelope of signal.
 
     Parameters
@@ -37,8 +37,8 @@ def envelope(y, absolute=True):
     --------
     fftwhilbert : function
         A faster way of calculating the analytic signal
-    '''
-    
+    """
+
     ya = _fftwhilbert(y)
     if absolute is True:
         return np.abs(ya)
@@ -46,7 +46,7 @@ def envelope(y, absolute=True):
         return ya
 
 def fftwconvolve(in1, in2, mode="full"):
-    '''
+    """
     Convolve two N-dimensional arrays using PYFFTW.
     This is a modified version of scipy.signal.fftwconvolve
 
@@ -79,7 +79,7 @@ def fftwconvolve(in1, in2, mode="full"):
     out : float 1D array
         An N-dimensional array containing a subset of the discrete linear
         convolution of `in1` with `in2`.
-    '''
+    """
 
     def _centered(arr, newshape):
         # Return the center newshape portion of the array.
@@ -139,7 +139,7 @@ def fftwconvolve(in1, in2, mode="full"):
                          " 'same', or 'full'.")
 
 def _fftwhilbert(x, N=None, axis=-1):
-    '''
+    """
     Compute the analytic signal, using the Hilbert transform.
 
     The transformation is done along the last axis by default.
@@ -157,7 +157,7 @@ def _fftwhilbert(x, N=None, axis=-1):
     -------
     xa : ndarray
         Analytic signal of `x`, of each 1-D array along `axis`
-    '''
+    """
 
     x = np.asarray(x)
     if np.iscomplexobj(x):
@@ -186,9 +186,9 @@ def _fftwhilbert(x, N=None, axis=-1):
     return x
 
 def ordertrack(t, y, t_s, s, ds, cubic=True):
-    '''
+    """
 	Order track the vibration signal to match a desired position vector
-	
+
 	Parameters
 	----------
 	t : float 1D array
@@ -210,8 +210,8 @@ def ordertrack(t, y, t_s, s, ds, cubic=True):
         Shaft position of returned signal
     y_ot : float 1D array
         Order tracked signal
-	'''
-    
+	"""
+
     # Copy data
     t = np.array(t)
     y = np.array(y)
@@ -220,7 +220,7 @@ def ordertrack(t, y, t_s, s, ds, cubic=True):
 
     # Parameters
     dt = t[1] - t[0]
-    
+
     # Get the overlapping parts between y and s
     temp = t[0]
     t = t - temp
@@ -233,30 +233,30 @@ def ordertrack(t, y, t_s, s, ds, cubic=True):
         i2 = int(np.floor(t_s[-1]/dt))
     t = t[i1:i2]
     y = y[i1:i2]
-    
+
     #Interpolate the measured position to match vibration time
     f = interp1d(t_s, s)
     s = f(t)
-    
+
     #Make desired position signal
     s_ot = np.arange(s[0], s[-1], ds)
 
     # print('s.size=%i, y.size=%i' % (s.size, y.size))
-    
+
     #Make order tracked signal
     if cubic is True:
         f = InterpolatedUnivariateSpline(s, y, k = 3)
     else:
         f = interp1d(s, y)
     y_ot = f(s_ot)
-    
+
     #Return data
     return s_ot, y_ot
-   
+
 def _tsa(y, Fs, n):
-    '''
+    """
 	Get the Time synchronous average of a signal
-	
+
 	Parameters
 	----------
 	y : float 1D array
@@ -272,7 +272,7 @@ def _tsa(y, Fs, n):
         Time of synchronized signal
     y_tsa : flaot 1D array
         Synchronous signal
-	'''
+	"""
 
     n = np.float(n)
     k = int(y.size/n)
@@ -283,11 +283,11 @@ def _tsa(y, Fs, n):
     dt = 1.0/Fs
     tTSA = np.arange(0, k)*dt
     return tTSA, yTSA
-    
+
 def tsaremove(y, Fs, X, debug=False):
-    '''
+    """
 	Subtracts the synchronous average of a signal
-	
+
 	Parameters
 	----------
     y : float 1D array
@@ -296,13 +296,13 @@ def tsaremove(y, Fs, X, debug=False):
         Sampling rate in Hz
     X : float
         Synchronous speed in Hz
-	
+
 	Returns
 	-------
     y_nonsync : float 1D array
         Non-synchronous signal
-	'''
-    
+	"""
+
     rounds = int(np.floor(y.size/Fs*X))
     n = int(float(rounds)*Fs/X)
     t_s, y_s = _tsa(y[:n], Fs, rounds)
@@ -316,11 +316,11 @@ def tsaremove(y, Fs, X, debug=False):
             q2 = y.size
         y_as[q1:q2] -= y_s[:q2-q1]
     return y_as
-      
+
 def tsakeep(y, Fs, X, debug=False):
-    '''
+    """
 	Duplicates the synchronous signal to the original length
-	
+
 	Parameters
 	----------
     y : float 1D array
@@ -329,13 +329,13 @@ def tsakeep(y, Fs, X, debug=False):
         Sampling rate in Hz
     X : float
         Synchronous speed in Hz
-	
+
 	Returns
 	-------
     y_sync : float 1D array
         Synchronous signal
-	'''
-    
+	"""
+
     rounds = int(np.floor(y.size/Fs*X))
     n = int(float(rounds)*Fs/X)
     t_s, y_s = _tsa(y[:n], Fs, rounds)
@@ -351,32 +351,32 @@ def tsakeep(y, Fs, X, debug=False):
     return y_sync
 
 def _getregime(meanv, speedregimes):
-    '''
+    """
 	Checks if a mean speed is within a regime. Used in gsakeep()
-	
+
 	Parameters
 	----------
     meanv : float
         Mean shaft speed
     speedregimes : float 1D array
         Defined speed regimes
-	
+
 	Returns
 	-------
     chosenregime : int
         Index determining which regime the mean speed belongs to
-	'''
+	"""
 
     return np.argmax(np.greater(meanv, speedregimes[:-1]) * np.less(meanv, speedregimes[1:]))
 
 def generalized_synchronous_average(t, vib, t_s, s, R, ds=None):
-    '''
+    """
 	Estimate the synchronous average of a signal that actually varies in speed
     Based on
-    Abboud, D., Antoni, J., Sieg-Zieba, S., & Eltabach, M. (2016). 
-    Deterministic-random separation in nonstationary regime. 
+    Abboud, D., Antoni, J., Sieg-Zieba, S., & Eltabach, M. (2016).
+    Deterministic-random separation in nonstationary regime.
     Journal of Sound and Vibration, 362, 305-326.
-	
+
 	Parameters
 	----------
     t : float 1D array
@@ -391,7 +391,7 @@ def generalized_synchronous_average(t, vib, t_s, s, R, ds=None):
         Number of regimes
     ds : float, optional
         Force a certain delta position if wanted
-	
+
 	Returns
 	-------
     gsa : float 1D array
@@ -400,7 +400,7 @@ def generalized_synchronous_average(t, vib, t_s, s, R, ds=None):
         Order tracked position
     vib_ot : float 1D array
         Order tracked signal
-	'''
+	"""
 
     # Velocity
     Fs_s = 1.0/(t_s[1] - t_s[0])
@@ -465,37 +465,35 @@ def generalized_synchronous_average(t, vib, t_s, s, R, ds=None):
 
     return gsa, s_ot, vib_ot
 
-def autocorrelation(y, Fs, normalize=False):
-    '''
+def autocorrelation(y, normalize=False):
+    """
 	Get auto-correlation of the signal
-	
+
 	Parameters
 	----------
     y : float 1D array
         Signal
-    Fs : float
-        Sampling rate
     normalize : boolean, optional
         Whether signal should be normalized
-	
+
 	Returns
 	-------
 	ac : float 1D array
         Autocorrelated signal
-	'''
-    
+	"""
+
     assert y.dtype == np.float64
-    
+
     ac = fftwconvolve(np.flipud(y), y, 'full')
     if normalize:
         d = y.size
         ac[0:d] = ac[0:d]/np.arange(1, d+1, dtype = float)
         ac[d:ac.size] = ac[d:ac.size]/np.arange(d-1, 0, -1, dtype = float)
-        # ac = ac/y.var()
+
     return ac
 
 def downsample(s, n, phase=0):
-    '''
+    """
     Direct downsampling of a signal
 
     Parameters
@@ -506,35 +504,35 @@ def downsample(s, n, phase=0):
         Downsampling factor
     phase : int
         Phase lag before sampling
-    
+
     Returns
     -------
     s_out : 1D array
         Downsampled signal
-    '''
+    """
 
     return s[phase::n]
 
 def teager(vib):
-    '''
+    """
     Compute the teager energy operator
 
     Parameters
     ----------
     x : 1D array
         Input signal
-    
+
     Returns
     -------
     x_teager : float 1D array
         Teager energy operator
-    '''
+    """
 
     return vib[1:-1]*vib[1:-1] - vib[:-2]*vib[2:]
 
 @njit(cache=True)
 def encoder2position(t, enc, thr):
-    '''
+    """
     Converts from encoder pulses to position signal
 
     Parameters
@@ -545,7 +543,7 @@ def encoder2position(t, enc, thr):
         Measured analog signal
     thr : float
         Threshold for pulses going up or down
-    
+
     Returns
     -------
     t_s : float 1D array
@@ -554,7 +552,7 @@ def encoder2position(t, enc, thr):
         Position vector
     n : int
         Number of pulses encountered
-    '''
+    """
 
     s = np.zeros(enc.size)
     t_s = np.zeros(enc.size)
@@ -571,9 +569,9 @@ def encoder2position(t, enc, thr):
 
 @njit(cache=True)
 def _kern(x):
-    '''
+    """
     Kernel for _get_gsa
-    '''
+    """
 
     K = 1.0/sqrt(2*pi)*exp(-0.5*x**2)
     return K
@@ -581,9 +579,9 @@ def _kern(x):
 @njit(cache=True)
 def _get_gsa(sa, vibot_size, chosenregime_size, cyclesize,
     v_ot, regime_center_speed, lambd):
-    '''
+    """
     Jit function for GSA
-    '''
+    """
 
     # Initialize stuff
     gsa = np.zeros(vibot_size)

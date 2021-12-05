@@ -3,3 +3,4 @@ __pycache__/*
 docs/html*
 docs/doctrees*
 pyvib/__pycache__*
+*.nc

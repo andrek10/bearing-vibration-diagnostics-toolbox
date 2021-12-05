@@ -8,18 +8,25 @@ from .misc import _XOR
 
 
 class bearinglifetimemodel(object):
-    """Makes a Weibull lifetime distribution for a bearing
+    """
+    Makes a Weibull lifetime distribution for a bearing
 
 	Parameters
 	----------
     L10 : float
         Lifetime of bearing in million revolutions
 
+    Methods
+    -------
+    life:
+        Get lifetime in million revs based on probability of survival
+    survival:
+        Get survival probability based on number of revs
+
 	Returns
 	-------
 	bearing : class object
         Bearing object
-
 	"""
 
     def __init__(self, L10):
@@ -34,7 +41,8 @@ class bearinglifetimemodel(object):
         self.e = self.s1/np.log(self.L1/self.Lbeta)
         
     def life(self, S):
-        """Get lifetime in million revs based on probability of survival
+        """
+        Get lifetime in million revs based on probability of survival
 
         Parameters
         ----------
@@ -45,7 +53,6 @@ class bearinglifetimemodel(object):
         -------
         L : float
             Lifetime in million revolutions
-
         """
 
         s = np.log(np.log(1.0/S))
@@ -53,7 +60,8 @@ class bearinglifetimemodel(object):
         return L
         
     def survival(self, L):
-        """Get survival probability based on number of revs
+        """
+        Get survival probability based on number of revs
 
         Parameters
         ----------
@@ -64,7 +72,6 @@ class bearinglifetimemodel(object):
         -------
         S : float
             Survival probability <0.0, 1.0>
-
         """
 
         a = self.e*np.log(L/self.Lbeta)
@@ -72,7 +79,8 @@ class bearinglifetimemodel(object):
         return S
         
 def bearingcharfrequencies(D, d, n, theta=0.0):
-    """Calculate bearing characteristic orders from dimensions.
+    """
+    Calculate bearing characteristic orders from dimensions.
     Equations taken from:
     Rolling element bearing diagnostics-A tutorial by R Randall and J Antoni
 
@@ -91,7 +99,6 @@ def bearingcharfrequencies(D, d, n, theta=0.0):
 	-------
 	bearing : array_like
         Bearing fault orders (inner, roller, cage, outer)
-
 	"""
 
     theta = theta*np.pi/180.0
@@ -102,7 +109,8 @@ def bearingcharfrequencies(D, d, n, theta=0.0):
     return np.array([BPFI, 2*BSF, FTF, BPFO])
 
 def bearingsimulation(t, s, fo, beta=1000.0, omr=10400.0, taustd=0.02, initpause=0.0, amp=1.0, debug=False, seed=None):
-    """Make a simulation of a bearing with an outer race fault
+    """
+    Make a simulation of a bearing with an outer race fault
 
 	Parameters
 	----------
@@ -135,7 +143,6 @@ def bearingsimulation(t, s, fo, beta=1000.0, omr=10400.0, taustd=0.02, initpause
 	-------
     x : float 1D array
         The bearing vibration
-
 	"""
 
     if seed is not None:
@@ -171,7 +178,8 @@ def bearingsimulation(t, s, fo, beta=1000.0, omr=10400.0, taustd=0.02, initpause
     return x
 
 def bearingsimulation_ahc(t, s, fo, amp, beta=1000.0, omr=3543.0, initpause=0.5):
-    """Make a simulation of a bearing with an outer race fault
+    """
+    Make a simulation of a bearing with an outer race fault
     where the shaft speed can pass 0 rpm speed.
 
 	Parameters
@@ -196,7 +204,6 @@ def bearingsimulation_ahc(t, s, fo, amp, beta=1000.0, omr=3543.0, initpause=0.5)
 	-------
     x : float 1D array
         The bearing vibration
-
 	"""
 
     # Make parameters

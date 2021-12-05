@@ -1,6 +1,6 @@
-'''
+"""
 misc
-'''
+"""
 
 import numpy as np
 import pandas as pd
@@ -8,7 +8,7 @@ from numba import njit
 
 
 def primefactors(number):
-    '''
+    """
     Determine all prime factors for the input number
 
     Parameters
@@ -20,7 +20,7 @@ def primefactors(number):
     -------
     factors : 1D array of int
         Prime factors
-    '''
+    """
 
     number = int(number)
     i = 2
