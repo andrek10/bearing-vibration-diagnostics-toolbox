@@ -62,8 +62,6 @@ def main():
 
     # Perform order tracking to remove frequency variations
     ds = 1.0/(np.round(Fs/fs_ref))  # Desired delta shaft position between each order tracked vibration sample
-    fig, ax = plt.subplots(); ax.plot(t_s, s)
-    plt.show()
     s_ot, vib_ot = pyvib.signal.ordertrack(t, vib, t_s, s, ds)
 
     # Remove synchronous components with time synchronous average
