@@ -48,8 +48,12 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx_rtd_theme",
     "sphinx_autodoc_typehints",
-    "numpydoc"
+    "numpydoc",
+    "sphinxcontrib.bibtex"
 ]
+
+bibtex_bibfiles = ['publications.bib', 'datasets.bib', 'thesis.bib']
+bibtex_default_style = 'unsrt'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

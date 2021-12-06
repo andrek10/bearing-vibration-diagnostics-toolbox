@@ -38,10 +38,7 @@ Example
 
 Here follows an example on running some of the code in the repository.
 
-For this example, we will use some open-sourced dataset from University of Agder.
-The data repository is accessible `here <https://doi.org/10.18710/BG1QNG>`_.
-As an example, we will focus on a single file located `here <https://doi.org/10.18710/BG1QNG/PY6I6X>`_.
-(`direct download link <https://dataverse.no/file.xhtml?persistentId=doi:10.18710/BG1QNG/PY6I6X&version=1.1>`_ to the file).
+For this example, we will use the bearing simulator to make some signals, and perform a diagnosis.
 
 .. literalinclude:: ../examples/diagnosis.py
    :language: python
