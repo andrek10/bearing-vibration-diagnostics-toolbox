@@ -4,7 +4,7 @@ Publications
 Thesis
 ------
 
-The pyvib module was built during my PhD education at University of Agder, Norway.
+The pyvib module was built during my PhD education at University of Agder, Grimstad, Norway.
 Because of the open-source community, I was able to produce most of my thesis with LaTeX, Inkscape and most importantly Python.
 In addition, the PhD thesis was funded by the public: Ministry of Education in Norway.
 In this spirit, I release the pyvib module to the public.
