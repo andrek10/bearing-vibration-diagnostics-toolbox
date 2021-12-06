@@ -1,2 +1,8 @@
 .vscode/*
 __pycache__/*
+docs/html*
+docs/doctrees*
+pyvib/__pycache__*
+*.nc
+build*
+pyvib.egg-info*

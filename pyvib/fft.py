@@ -1,5 +1,7 @@
-"""FFT
 """
+FFT related functions
+"""
+
 import numpy as np
 import pyfftw
 from psutil import cpu_count

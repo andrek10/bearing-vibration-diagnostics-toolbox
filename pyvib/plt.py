@@ -1,6 +1,6 @@
-'''
+"""
 plt.py
-'''
+"""
 
 import os
 import time
@@ -16,9 +16,9 @@ from .signal import downsample
 
 
 def figure(nh, nw, width=238.0, height=133.0, axesLoc=None, sharex=False):
-    '''
+    """
 	Makes a new figure with custom columns and rows, and custom size
-	
+
 	Parameters
 	----------
     nh : int
@@ -35,15 +35,15 @@ def figure(nh, nw, width=238.0, height=133.0, axesLoc=None, sharex=False):
         Best explained with an example:
 
         - axesLoc = ( (1,1,1,2), (2,1,1,2), (1,3,1,1), (2,3,1,1) )
-	
+
 	Returns
 	-------
 	fig : figure object
         Reference to the figure
     axes : axes objects in 1D array
         All axes in a row-major configuration
-	'''
-    
+	"""
+
     fig, ax = plt.subplots(nh, nw, figsize=(width/72.0, height/72.0), frameon=False, sharex=sharex)
     if axesLoc is not None:
         ax = ax.ravel()
@@ -54,18 +54,18 @@ def figure(nh, nw, width=238.0, height=133.0, axesLoc=None, sharex=False):
             t = axesLoc[i]
             ax.append(plt.subplot2grid( (nh,nw), (t[0]-1,t[1]-1), rowspan=t[2], colspan=t[3] ))
         ax = np.array(ax)
-    
+
     if type(ax) == np.ndarray:
         axes = ax.ravel()
     else:
         axes = ax
-        
+
     return fig, axes
-    
+
 def savefig(fig, path, name, pad=0.03, dpi=200.0):
-    '''
+    """
 	Saves the figure to file
-	
+
 	Parameters
 	----------
     fig : figure object
@@ -73,7 +73,7 @@ def savefig(fig, path, name, pad=0.03, dpi=200.0):
     path : string
         Path to image folder. Dont add \ at the end
     name : string
-        Name of the image. Default is .eps ending. 
+        Name of the image. Default is .eps ending.
         Use whatever ending is appropriate
         .png, .jpg, .eps, .pdf etc.
     pad : float, optional
@@ -84,46 +84,46 @@ def savefig(fig, path, name, pad=0.03, dpi=200.0):
 	Returns
 	-------
 	None
-	'''
-    
+	"""
+
     if path[len(path)-1] != '\\':
         path += '\\'
     if name[len(name)-4] != '.':
         name += '.eps'
-    
+
     if not os.path.exists(path):
         os.mkdir(path)
     fullpath = path + name
     fig.savefig(fullpath, bbox_inches='tight', dpi=dpi, pad_inches=pad)
-    
+
 def usetex(latex=False):
-    '''
+    """
 	Use latex font in figures
-	
+
 	Parameters
 	----------
     latex : boolean, optional
         Turn off or on latex rendring
-	
+
 	Returns
 	-------
 	None
-	'''
+	"""
 
     plt.rc('font', **{'family': 'serif', 'serif': ['cm']})
     plt.rc('text', usetex=latex)
-    
+
 def arrow(x, y, angle, length, fig, ax, fs=None, slack=2.0, adjText=(0.0,0.0), label=None, scale=0.7, hideArrow=False, marker=False, markerSize=2.0, markerColor='r', markerLabel='_', markerType='.', textbbox=None):
-    '''
+    """
 	Makes an arrow in an axis based on a point, length and angle
-	
+
 	Parameters
 	----------
     x : float
         x-axis point the arrow hits
     y : float
         y-axis point the arrow hits
-    angle : float 
+    angle : float
         Angle of the arrow from horizontal. <0 - 360>
     length : float
         Length of the arrow
@@ -158,11 +158,11 @@ def arrow(x, y, angle, length, fig, ax, fs=None, slack=2.0, adjText=(0.0,0.0), l
     textbbow : bbox
         Text bounding box
         e.g. bboxMe = {'facecolor':'white', 'edgecolor':'white', 'zorder':-100, 'pad':0}
-	
+
 	Returns
 	-------
     None
-	'''
+	"""
 
     assert length > slack
     angle = angle*np.pi/180.0
@@ -203,9 +203,9 @@ def arrow(x, y, angle, length, fig, ax, fs=None, slack=2.0, adjText=(0.0,0.0), l
         ax.text(xt,yt,label,verticalalignment=va,horizontalalignment=ha,fontsize=fs, bbox=textbbox)
 
 def arrowxy(x1, y1, x2, y2, fig, ax, fs=8.0, slack=2.0, adjText=(0.0,0.0), label=None, scale=0.7, hideArrow=False, marker=False, markerSize=2.0, markerColor='r', markerLabel='_', markerType='.'):
-    '''
+    """
 	Makes an arrow in an axis based on endpoints
-	
+
 	Parameters
 	----------
     x1 : float
@@ -244,12 +244,12 @@ def arrowxy(x1, y1, x2, y2, fig, ax, fs=8.0, slack=2.0, adjText=(0.0,0.0), label
         Label of the marker, for legends
     markerType : string, optional
         Type of marker to use
-	
+
 	Returns
 	-------
     None
-	'''
-    
+	"""
+
 
     angle = np.arctan2(y1 - y2, x1 - x2)
 
@@ -289,9 +289,9 @@ def arrowxy(x1, y1, x2, y2, fig, ax, fs=8.0, slack=2.0, adjText=(0.0,0.0), label
         ax.text(xt,yt,label,verticalalignment=va,horizontalalignment=ha,fontsize=fs)
 
 def doublearrow(x1, x2, y, fig, ax, fs=8.0, slack=2.0, adjText=(0.0,0.0), label=None, scale=0.7):
-    '''
+    """
 	Make a double-ended horizontal arrow
-	
+
 	Parameters
 	----------
     x1 : float
@@ -315,32 +315,32 @@ def doublearrow(x1, x2, y, fig, ax, fs=8.0, slack=2.0, adjText=(0.0,0.0), label=
         Use None for none
     scale : float, optional
         Scale of the arrow
-	
+
 	Returns
 	-------
 	None
-	'''
+	"""
     ylim = ax.get_ylim()
     ylimd = ylim[1] - ylim[0]
     bbox = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
     height = bbox.height*fig.dpi
     dx = (x2 - x1)/2.0#/width*xlimd
     cx = (x1 + x2)/2.0
-    
+
     ax.quiver(cx, y, -dx, 0.0, scale_units='xy', angles = 'xy', scale = 1, width = 0.03*scale, units = 'inches')
     ax.quiver(cx, y, dx, 0.0, scale_units='xy', angles = 'xy', scale = 1, width = 0.03*scale, units = 'inches')
-    
+
     if label is not None:
-        xt = cx 
+        xt = cx
         yt = y + (2.5+adjText[1])/height*ylimd
         ha = 'center'
         va = 'bottom'
         ax.text(xt,yt,label,verticalalignment=va,horizontalalignment=ha,fontsize=fs)
 
 def get_xy(x, y, line, ax):
-    '''
+    """
 	Get actual point of a line close to input point
-	
+
 	Parameters
 	----------
     x : float
@@ -352,7 +352,7 @@ def get_xy(x, y, line, ax):
         Get from   line, = ax.plot()
     ax : axis object
         Axis to look on
-	
+
 	Returns
 	-------
     xd : float
@@ -361,7 +361,7 @@ def get_xy(x, y, line, ax):
         Closest y-point
     I : int
         Data index of this point
-	'''
+	"""
     if type(line) == list:
         line = line[0]
     xlim = ax.get_xlim()
@@ -372,7 +372,7 @@ def get_xy(x, y, line, ax):
     bbox = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
     width = bbox.width
     height = bbox.height
-    
+
     x = x/xlimd*width
     y = y/ylimd*height
     xd = np.array(line.get_xdata())/xlimd*width
@@ -382,10 +382,10 @@ def get_xy(x, y, line, ax):
     return xd[I]*xlimd/width, yd[I]*ylimd/height, I
 
 def subfiglabels(fig, fs, usetex, position='upperrightoutside', move=3.0, skipaxes=None, transpose=False, axes=None):
-    '''
+    """
 	Adds index to all subfigures in a placement of choice
     Should run fig.tight_layout() first
-	
+
 	Parameters
 	----------
     fig : figure object
@@ -406,11 +406,11 @@ def subfiglabels(fig, fs, usetex, position='upperrightoutside', move=3.0, skipax
         Move slightly if crashing with edges etc.
     transpose : bool, optional
         If true, subfiglabels are column-major instad
-	
+
 	Returns
 	-------
 	None
-	'''
+	"""
     if skipaxes == None:
         skipaxes = []
     if axes is None:
@@ -430,7 +430,7 @@ def subfiglabels(fig, fs, usetex, position='upperrightoutside', move=3.0, skipax
             ylim = ax.get_ylim()
             xlimd = xlim[1] - xlim[0]
             ylimd = ylim[1] - ylim[0]
-            
+
             x = xlim[0] + move/width*xlimd
             y = ylim[1] - move/height*ylimd
             if usetex is True:
@@ -448,7 +448,7 @@ def subfiglabels(fig, fs, usetex, position='upperrightoutside', move=3.0, skipax
             ylim = ax.get_ylim()
             xlimd = xlim[1] - xlim[0]
             ylimd = ylim[1] - ylim[0]
-            
+
             x = xlim[0] + move/width*xlimd
             y = ylim[1] + move/height*ylimd
             if usetex is True:
@@ -466,7 +466,7 @@ def subfiglabels(fig, fs, usetex, position='upperrightoutside', move=3.0, skipax
             ylim = ax.get_ylim()
             xlimd = xlim[1] - xlim[0]
             ylimd = ylim[1] - ylim[0]
-            
+
             x = xlim[1] + move/width*xlimd
             y = ylim[1] + move/height*ylimd
             if usetex is True:
@@ -485,18 +485,18 @@ def subfiglabels(fig, fs, usetex, position='upperrightoutside', move=3.0, skipax
             xlimd = xlim[1] - xlim[0]
             ylimd = ylim[1] - ylim[0]
             xlbl_pos = ax.xaxis.get_label().get_window_extent().transformed(ax.transAxes.inverted())
-            
+
             x = (xlim[1] + xlim[0])/2.0
             y = ylim[0] + xlbl_pos.y0*ylimd
             if usetex is True:
                 ax.text(x, y, r'\textbf{(%s)}' % (chr(i+97)), verticalalignment = 'top', horizontalalignment = 'center', fontsize=fs)
             else:
                 ax.text(x, y, r'(%s)' % (chr(i+97)), verticalalignment = 'top', horizontalalignment = 'center', weight = 'bold', fontsize=fs)
-            
+
 def useexp(ax, exp=True, thr=(-1,1)):
-    '''
+    """
 	Use exponential term on y-axis on an axis
-	
+
 	Parameters
 	----------
     ax : axis object
@@ -505,20 +505,20 @@ def useexp(ax, exp=True, thr=(-1,1)):
         Turn on or off exp.
     thr : tupple, optional
         Lower and upper 10^X threshold for using scientific notation
-	
+
 	Returns
 	-------
 	None
-	'''
+	"""
     if exp is True:
         ax.yaxis.get_major_formatter().set_powerlimits(thr)
     else:
         ax.yaxis.get_major_formatter().set_powerlimits((-99,99))
 
 def plotharmonics(fhar, fsub, ax, **kwParameters):
-    '''
+    """
 	Plot harmonics and sidebands
-	
+
 	Parameters
 	----------
     fhar : float
@@ -567,12 +567,12 @@ def plotharmonics(fhar, fsub, ax, **kwParameters):
         Linewidth of subbands
     sublabel : string, optional
         Legend label of subbands
-	
+
 	Returns
 	-------
 	None
-	'''
-    
+	"""
+
     #Default arguments
     xlim = ax.get_xlim()
     nhar = int(np.floor(xlim[1]/fhar))
@@ -590,7 +590,7 @@ def plotharmonics(fhar, fsub, ax, **kwParameters):
     substyle = '--'
     subwidth = 0.5
     sublabel = None
-    
+
     #Check keywords
     if kwParameters is not None:
         for key, value in kwParameters.items():
@@ -616,7 +616,7 @@ def plotharmonics(fhar, fsub, ax, **kwParameters):
                 subwidth = value
             if key == 'sublabel':
                 sublabel = value
-    
+
     #Make values required
     if type(nhar) is not list:
         nhar = list(np.arange(1, nhar+1))
@@ -624,7 +624,7 @@ def plotharmonics(fhar, fsub, ax, **kwParameters):
         nsub_n = list(np.ones(len(nhar), dtype = int)*nsub_n)
     if type(nsub_p) is not list and nsub_p is not None:
         nsub_p = list(np.ones(len(nhar), dtype = int)*nsub_p)
-        
+
     harplotted = False
     subplotted = False
     ylim = ax.get_ylim()
@@ -651,11 +651,11 @@ def plotharmonics(fhar, fsub, ax, **kwParameters):
                     subplotted = True
                 else:
                     ax.plot([fp, fp], ylim, substyle, color = subcolor, linewidth = subwidth)
-            
+
 def plotfft(Y, df, ax, xlim=None, linetype='-k', width=None, label='', zorder=3, color=None):
-    '''
+    """
 	Plot a spectrum with certain limit in x and y direction
-	
+
 	Parameters
 	----------
     Y : float 1D array
@@ -681,13 +681,13 @@ def plotfft(Y, df, ax, xlim=None, linetype='-k', width=None, label='', zorder=3,
     color : string, or RGB/RGBA tupple
         The line color
         Will override line color
-	
+
 	Returns
 	-------
     line : line object
         The spectrum line object
-	'''
-    
+	"""
+
     if xlim is None:
         n0 = 0
         n1 = Y.size
@@ -702,9 +702,9 @@ def plotfft(Y, df, ax, xlim=None, linetype='-k', width=None, label='', zorder=3,
     return line
 
 def plotcepstrum(cep, dt, ax, xlim=None, line='-k', width=None, label=None, zorder=3):
-    '''
+    """
 	Plot a cepstrum with certain limit in x and y direction
-	
+
 	Parameters
 	----------
     cep : float 1D array
@@ -725,13 +725,13 @@ def plotcepstrum(cep, dt, ax, xlim=None, line='-k', width=None, label=None, zord
         Linewidth
     label : string, optional
         Label for legends
-	
+
 	Returns
 	-------
     line : line object
         The spectrum line object
-	'''
-    
+	"""
+
     if xlim is None:
         n0 = 0
         n1 = cep.size
@@ -742,12 +742,12 @@ def plotcepstrum(cep, dt, ax, xlim=None, line='-k', width=None, label=None, zord
         n1 = cep.size
     line = ax.plot(np.arange(n0, n1)*dt, cep[n0:n1], line, linewidth = width, label = label, zorder = zorder)
     return line
-    
+
 def plotbearingfaults(Y, df, X, bearing, maintitle='', harmonics=[8,8,8,8], subbands=2):
-    '''
+    """
 	Plots a 2x2 subplot figure of the same spectrum, but with harmonic lines
     and side-bands for each fault type
-	
+
 	Parameters
 	----------
     Y : float 1D array
@@ -765,13 +765,13 @@ def plotbearingfaults(Y, df, X, bearing, maintitle='', harmonics=[8,8,8,8], subb
         Number of harmonics to plot
     subbands : int, optional
         Number of side-bands to plot per harmonic
-	
+
 	Returns
 	-------
 	fig : figure object
         The figure
-	'''
-    
+	"""
+
     fig, axes = figure(4, 1, width=500.0, height=600.0)
     for i in range(0, 4):
         if i == 0:
@@ -786,7 +786,7 @@ def plotbearingfaults(Y, df, X, bearing, maintitle='', harmonics=[8,8,8,8], subb
         elif i == 3:
             title = 'Outer Ring'
             sideband = None
-        ax = axes[i]   
+        ax = axes[i]
         xlim = [0.0, (harmonics[i] + 1)*bearing[i]]
         plotfft(Y, df/(X), ax, xlim=xlim, width = None, linetype = '-k')
         #Find appropriate ylim
@@ -796,14 +796,14 @@ def plotbearingfaults(Y, df, X, bearing, maintitle='', harmonics=[8,8,8,8], subb
         ax.set_xlim(xlim)
         ax.set_title(title)
         plotharmonics(bearing[i], sideband, ax, nsub_n = subbands, nsub_p = subbands)
-    
+
     fig.suptitle(maintitle)
     plt.tight_layout()
     plt.subplots_adjust(top=0.93)
     return fig
 
 def set_xylim(xlim, ax, ylim_mult=[1.0, 1.1], lines=None):
-    '''
+    """
     Set the desired x-lim, and adjustts the y-lim to fit the new x-lim
 
     Parameters
@@ -817,7 +817,7 @@ def set_xylim(xlim, ax, ylim_mult=[1.0, 1.1], lines=None):
     lines : 1D array_like with lines, optional
         Choose to get y-lim of certain lines instad of all available in ax.
         None if all should be used.
-    '''
+    """
 
     lines = ax.get_lines()
     ymax = []
@@ -834,7 +834,7 @@ def set_xylim(xlim, ax, ylim_mult=[1.0, 1.1], lines=None):
     ax.set_ylim(ymin.min()*ylim_mult[0], ymax.max()*ylim_mult[1])
 
 def set_xticks(ax, majorspacing, minorspacing=None):
-    '''
+    """
     Set the major and minor spacing of the x-axis
 
     Parameters
@@ -847,7 +847,7 @@ def set_xticks(ax, majorspacing, minorspacing=None):
         If array_like: Makes spacing at these points
     minorspacing : float or array_like, optional
         Sets the minor spacing. Same rules as majorspacing
-    '''
+    """
 
     if type(majorspacing) is float:
         majorLocator = MultipleLocator(majorspacing)
@@ -874,7 +874,7 @@ def set_xticks(ax, majorspacing, minorspacing=None):
     ax.xaxis.set_minor_locator(minorLocator)
 
 def set_yticks(ax, majorspacing, minorspacing=None):
-    '''
+    """
     Set the major and minor spacing of the y-axis
 
     Parameters
@@ -887,7 +887,7 @@ def set_yticks(ax, majorspacing, minorspacing=None):
         If array_like: Makes spacing at these points
     minorspacing : float or array_like, optional
         Sets the minor spacing. Same rules as majorspacing
-    '''
+    """
 
     # Major formatter
     if type(majorspacing) is float:
@@ -915,10 +915,10 @@ def set_yticks(ax, majorspacing, minorspacing=None):
         ax.yaxis.set_minor_locator(minorLocator)
 
 def plotforcingfreqs(Y, df, X, forcingfreqs, forcingfreqtitles=None, maintitle = '', harmonics = 8):
-    '''
+    """
 	Plots a 2x2 subplot figure of the same spectrum, but with harmonic lines
     and side-bands for each fault type
-	
+
 	Parameters
 	----------
     Y : float 1D array
@@ -938,13 +938,13 @@ def plotforcingfreqs(Y, df, X, forcingfreqs, forcingfreqtitles=None, maintitle =
         Number of harmonics to plot
     subbands : int, optional
         Number of side-bands to plot per harmonic
-	
+
 	Returns
 	-------
 	fig : figure object
         The figure
-	'''
-    
+	"""
+
     N = len(forcingfreqs)
     fig, axes = figure(N,1, width = 500.0, height = 600.0/4*N)
     if N == 1:
@@ -953,7 +953,7 @@ def plotforcingfreqs(Y, df, X, forcingfreqs, forcingfreqtitles=None, maintitle =
         if forcingfreqtitles is not None:
             title = forcingfreqtitles[i]
         sideband = None
-        ax = axes[i]   
+        ax = axes[i]
         xlim = [0.0, (harmonics + 1)*forcingfreqs[i]]
         plotfft(Y, df/(X), ax, xlim=xlim, width = None, linetype = '-k')
         #Find appropriate ylim
@@ -963,16 +963,16 @@ def plotforcingfreqs(Y, df, X, forcingfreqs, forcingfreqtitles=None, maintitle =
         ax.set_xlim(xlim)
         ax.set_title(title)
         plotharmonics(forcingfreqs[i], sideband, ax, nsub_n = 1, nsub_p = 1)
-    
+
     fig.suptitle(maintitle)
     plt.tight_layout()
     plt.subplots_adjust(top=0.93)
     return fig
 
 def get_decimatedplotvalues(t, vib, r=None, p=None):
-    '''
+    """
 	Get a decimated version of the input signal where peaks are visibly intact
-	
+
 	Parameters
 	----------
     t : float 1D array
@@ -985,15 +985,15 @@ def get_decimatedplotvalues(t, vib, r=None, p=None):
     p : int, optional
         Number of points to keep
         Either r or p must be supplied
-	
+
 	Returns
 	-------
 	tdec : float 1D array
         Decimated time signal
     vibdec : float 1D array
         Decimated signal
-	'''
-    
+	"""
+
     assert p is not None or r is not None
     if r is not None:
         r = int(r)
@@ -1017,9 +1017,9 @@ def get_decimatedplotvalues(t, vib, r=None, p=None):
     return tdec, vib2
 
 def decimatedplot(t, vib, p, ax, direct=False):
-    '''
+    """
 	Plot a decimated version where peaks are intact
-	
+
 	Parameters
 	----------
     t : float 1D array
@@ -1033,7 +1033,7 @@ def decimatedplot(t, vib, p, ax, direct=False):
     direct : bool
         If direct decimation should be performed instead of
         preserving peaks
-	'''
+	"""
     if direct is False:
         if vib.size <= p:
             r = 1
@@ -1047,10 +1047,10 @@ def decimatedplot(t, vib, p, ax, direct=False):
     ax.plot(tdec, vibdec)
 
 def filterbankvisualization(filters, level, ymax=1.03):
-    '''
+    """
 	Visualizes the effect of filters in a filterbank.
     Can also be used to see the frequency response of a single filter
-	
+
 	Parameters
 	----------
     filters : list of 1D arrays
@@ -1059,13 +1059,13 @@ def filterbankvisualization(filters, level, ymax=1.03):
         The filterbank level. 0 means one filtering process
     ymax : float, optional
         The maximum y-axis value for plot. Use None to see all.
-	
+
 	Returns
 	-------
 	fig : figure object
         The figure
-	'''
-    
+	"""
+
     w = np.linspace(-np.pi, np.pi, 2**18)
     r = []
     lines = ['r','b','g','c','m','k']
@@ -1081,13 +1081,13 @@ def filterbankvisualization(filters, level, ymax=1.03):
         ax.set_xlim([-0.5, 0.5])
         if ymax is not None:
             ax.set_ylim([0.0, ymax])
-    else:   
+    else:
         for i in range(0, d):
             ax[0].plot(w/(2*np.pi),np.abs(r[i]),lines[i%6])
         ax[0].set_xticks(np.arange(-0.5, 0.6, 0.1))
         ax[0].set_xlim([-0.5, 0.5])
         ax[0].set_ylim([0.0, 1.03])
-    
+
     xfilt = deepcopy(r)
     for i in range(0, level):
         xfiltNew = []
@@ -1095,7 +1095,7 @@ def filterbankvisualization(filters, level, ymax=1.03):
             for rk in range(0, d):
                 rd = downsample(r[rk],2**(i+1))
                 rdl = rd.size//2
-                
+
                 x = np.zeros(w.size, dtype = 'complex')
                 if j % 2 == 0:
                     for k in range(0, 2**(i+1)+1):
@@ -1108,11 +1108,11 @@ def filterbankvisualization(filters, level, ymax=1.03):
                 else:
                     for k in range(0, 2**(i+1)):
                         x[k*2*rdl:(k+1)*2*rdl] = rd
-                    
+
                 x = x*xfilt[j]
                 ax[i+1].plot(w/(2*np.pi), np.abs(x), lines[rk%6], label='signal{}'.format(rk) if i == 0 else None)
                 xfiltNew.append(np.copy(x))
-                
+
         xfilt = deepcopy(xfiltNew)
         ax[i+1].set_xticks(np.arange(-0.5, 0.6, 0.1))
         ax[i+1].set_xlim([-0.5, 0.5])
@@ -1121,9 +1121,9 @@ def filterbankvisualization(filters, level, ymax=1.03):
     return fig, ax
 
 def plotsquare(corner1, corner2, ax, line='-r', label='', linewidth=None):
-    '''
+    """
 	Plot a square
-	
+
 	Parameters
 	----------
     corner1 : tupple or array_like of floats
@@ -1136,24 +1136,24 @@ def plotsquare(corner1, corner2, ax, line='-r', label='', linewidth=None):
         Design of line with color and linetype
     label : string, optional
         Legend label
-	
+
 	Returns
 	-------
 	None
-	'''
-         
+	"""
+
     x1 = corner1[0]
     x2 = corner2[0]
-    y1 = corner1[1] 
+    y1 = corner1[1]
     y2 = corner2[1]
     x = np.array([x1, x2, x2, x1, x1])
     y = np.array([y1, y1, y2, y2, y1])
     ax.plot(x, y, line, linewidth=linewidth)
-    
+
 class get_xydata():
-    '''
+    """
 	Get closest point on graph by clicking on the figure
-	
+
 	Parameters
 	----------
 	fig : figure object
@@ -1170,7 +1170,7 @@ class get_xydata():
 	Returns
 	-------
 	None
-	'''
+	"""
 
     def __init__(self, fig, ax, line, snap = True, label=None):
         self.xd = []
@@ -1192,7 +1192,7 @@ class get_xydata():
 
     def onclick(self, event):
         self.time_press = time.time()
-    
+
     def onrelease(self, event):
         self.time_release = time.time()
         if self.time_release - self.time_press < 0.3:
@@ -1208,14 +1208,14 @@ class get_xydata():
                 self.xd = self.xd[0:-1]
                 self.yd = self.yd[0:-1]
             self.printdata()
-            
+
     def printdata(self):
         str1 = '    xd = np.array(['
         for i in range(0, len(self.xd)):
             str1 += str(self.xd[i]) + ', '
         str1 += '])'
         str2 = '    yd = np.array(['
-        for i in range(0, len(self.yd)):    
+        for i in range(0, len(self.yd)):
             str2 += str(self.yd[i]) + ', '
         str2 += '])'
         print('\n')
@@ -1225,7 +1225,7 @@ class get_xydata():
         print(str2)
 
 def rgb2hex(r, g, b):
-    '''
+    """
     Convert RGB to a hex string
 
     Parameters
@@ -1241,7 +1241,7 @@ def rgb2hex(r, g, b):
     -------
     hex : string
         Hex string
-    '''
+    """
     # Assume all are ints 0 to 255
     if type(r) == float:
         r, g, b = np.array(np.array([r, g, b])*255, int)
@@ -1255,7 +1255,7 @@ def rgb2hex(r, g, b):
     return h
 
 class PlotUpdater():
-    '''
+    """
     Add dynamic switching of graphs by changing data
     Hold shift and:
     - right: increase index
@@ -1267,7 +1267,7 @@ class PlotUpdater():
     ----------
     fig : plt figure
         Figure
-    '''
+    """
 
     def __init__(self, fig):
         self.xd = []
@@ -1280,7 +1280,7 @@ class PlotUpdater():
         self.fig = fig
 
     def addLine(self, line, ax, lineData):
-        '''
+        """
         Add a line to the figure
 
         Parameters
@@ -1292,7 +1292,7 @@ class PlotUpdater():
         lineData : dictionary or list of dictionaries
             Dictionary must contain 'x' for x-data and
             'y' for y-data
-        '''
+        """
         self.lines.append(line)
         if type(lineData) == list:
             self.lineDatas.append(lineData)
@@ -1341,7 +1341,7 @@ class PlotUpdater():
         self.fig.canvas.flush_events()
 
 def get_allLinesAndLabels(axes):
-    '''
+    """
     Get all lines and labels in a list of axes
 
     Parameters
@@ -1355,7 +1355,7 @@ def get_allLinesAndLabels(axes):
         Identified lines
     labels : list of label
         Line labels
-    '''
+    """
 
     lines = []
     labels = []
@@ -1374,7 +1374,7 @@ def get_allLinesAndLabels(axes):
     return lines, labels
 
 def alignYLabels(fig, axes):
-    '''
+    """
     Align y labels to a single line for the axes
     The left-most positioned label is used
 
@@ -1383,7 +1383,7 @@ def alignYLabels(fig, axes):
         Figure which axes are on
     axes : list of axes
         Axes to align
-    '''
+    """
 
     ax = axes[0]
     fig.canvas.draw()
@@ -1413,7 +1413,7 @@ def alignYLabels(fig, axes):
     fig.canvas.draw()
 
 def set_tickformat(ax, axes, fmat='%.1f'):
-    '''
+    """
     Set certain format on numbers on axes
 
     Parameters
@@ -1424,7 +1424,7 @@ def set_tickformat(ax, axes, fmat='%.1f'):
         both, x or y
     fmat : string
         Number format to use
-    '''
+    """
 
     if axes == 'both':
         ax.xaxis.set_major_formatter(FormatStrFormatter(fmat))
@@ -1437,7 +1437,7 @@ def set_tickformat(ax, axes, fmat='%.1f'):
         raise Exception('Axes object does not exist')
 
 def textCorner(fig, ax, label, textbbox=None):
-    '''
+    """
     Add text in upper left corner of axis
 
     Parameters
@@ -1449,7 +1449,7 @@ def textCorner(fig, ax, label, textbbox=None):
     textbbow : bbox
         Text bounding box
         e.g. bboxMe = {'facecolor':'white', 'edgecolor':'white', 'zorder':-100, 'pad':0}
-    '''
+    """
 
     bbox = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
     width = bbox.width*fig.dpi

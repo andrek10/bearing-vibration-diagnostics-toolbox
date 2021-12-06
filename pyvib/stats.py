@@ -1,6 +1,6 @@
-'''
+"""
 Statistical functions
-'''
+"""
 
 from copy import deepcopy
 from math import log
@@ -14,25 +14,25 @@ from .signal import envelope, fftwconvolve
 
 
 def arresidual(t, y, a):
-    '''
+    """
     Returns the residual of the autoregressive model with coefficients a
-    
+
     Parameters
     ----------
     t : float 1D array
         Time signal
-    y : float 1D array 
+    y : float 1D array
         Signal to filter
-    a : float 1D array 
+    a : float 1D array
         AR model coeffs
-        
+
     Returns
     -------
-    t : float 1D array 
+    t : float 1D array
         New time signal
-    y : float 1D array 
+    y : float 1D array
         Filtered signal
-    '''
+    """
 
     y = fftwconvolve(y, a, 'valid')
     N = a.size - 1
@@ -40,9 +40,9 @@ def arresidual(t, y, a):
     return t, y
 
 def arresponse(t, y, a):
-    '''
+    """
     Returns the predicted response of the autoregressive model with coeffs a
-    
+
     Parameters
     ----------
     t : float 1D array
@@ -51,14 +51,14 @@ def arresponse(t, y, a):
         Signal
     a : float 1D array
         AR model coeffs
-        
+
     Returns
     -------
     t : float 1D array
         New time signal
-    y : float 1D array 
+    y : float 1D array
         Filtered signal
-    '''
+    """
 
     ynoise = fftwconvolve(y, a, 'valid')
     N = a.size - 1
@@ -67,7 +67,7 @@ def arresponse(t, y, a):
     return t, y
 
 def armodel(y, p, Crit=0, debug=False):
-    '''
+    """
     This function tries to remove stationary signals by estimating an
     autoregressive model on the vibration signal. Afterwards this estiamte can
     be subtracted from the original signal using arresidual()
@@ -76,14 +76,14 @@ def armodel(y, p, Crit=0, debug=False):
     ----------
     y : float 1D array
         Vibration data.
-    p : int 
+    p : int
         Maximum number of filter coefficients
     Crit : int, optional
         Criterion for choosing optimal p:
 
         - 0 uses Akaike Information Criterium (AICc)
         - 1 uses Bayesian Information Criterium (BIC)
-    
+
     debug : boolean, optional
         Choose if debug information should be returned
 
@@ -98,7 +98,7 @@ def armodel(y, p, Crit=0, debug=False):
     --------
     arresidual() - Return the residual (random) signal
     arresponse() - Returns the autoregressive model response
-    '''
+    """
 
     y = y - y.mean()
     RR = fftwconvolve(np.flipud(y), y)
@@ -108,19 +108,19 @@ def armodel(y, p, Crit=0, debug=False):
     abest, sigma, AIC, apmax, popt = _autoRegressiveFilter_v4(RR[RR_start:RR_start+p+1], p, Crit, y.size)
     aopt = np.concatenate((np.ones(1), abest[0:popt]))
     apmax = np.concatenate((np.ones(1), apmax))
-        
+
     if debug is True:
         return aopt, popt, apmax, AIC, sigma
     else:
-        return aopt, popt  
-    
+        return aopt, popt
+
 def EHNR(x, Fs = 1.0, debug=False):
-    '''
-    Get Envelope Harmonic-to-noise ratio 
+    """
+    Get Envelope Harmonic-to-noise ratio
     Based on:
-    Xu, X., Zhao, M., Lin, J., & Lei, Y. (2016). 
-    Envelope harmonic-to-noise ratio for periodic impulses 
-        detection and its application to bearing diagnosis. 
+    Xu, X., Zhao, M., Lin, J., & Lei, Y. (2016).
+    Envelope harmonic-to-noise ratio for periodic impulses
+        detection and its application to bearing diagnosis.
     Measurement, 91, 385-397.
 
     Parameters
@@ -136,13 +136,13 @@ def EHNR(x, Fs = 1.0, debug=False):
     -------
     EHNR : float
         The EHNR value
-    '''
+    """
 
     if x.size % 2 == 1:
         x = x[0:-1]
     Env_prime = envelope(x)
     Env = Env_prime - np.mean(Env_prime)
-    
+
     t_i = x.size/2 - 1
     dt = 1.0/Fs
     temp = Env[:t_i]
@@ -171,9 +171,9 @@ def EHNR(x, Fs = 1.0, debug=False):
 
 @jit(nopython=True, cache=True)
 def _autoRegressiveFilter_v4(RR, pmax, Crit, signalSize):
-    '''
+    """
     Solves the Yule-Walker equations for autoregressie model
-    '''
+    """
     # Make necessary arrays for calculation
     abest = np.zeros(pmax)
     aold = np.zeros(pmax)
@@ -210,14 +210,14 @@ def _autoRegressiveFilter_v4(RR, pmax, Crit, signalSize):
             popt = k + 1
             for j in range(0, k+1):
                 abest[j] = anew[j]
-    
+
     # Return
     return abest, sigma, AIC, anew, popt
 
 def _checkOccurences(rho, tol, printOccurences, skipSignals):
-    '''
+    """
     Checks occurences of co-variances being over a thrshold
-    '''
+    """
 
     occurences = np.zeros(n)
     for i in range(0, n):
@@ -230,11 +230,11 @@ def _checkOccurences(rho, tol, printOccurences, skipSignals):
     if printOccurences is True:
         print('Occurences:')
         pretty(occurences[:,None])
-    
+
     return occurences
 
 def covariance(A, printSingular=False, tol=0.9, skipSignals=[]):
-    '''
+    """
     Compute the covariance of columns in matrix A
 
     Parameters
@@ -249,9 +249,9 @@ def covariance(A, printSingular=False, tol=0.9, skipSignals=[]):
     rho : array
         Covariance matrix
     occurences : array
-        How many other signals each signal is 
+        How many other signals each signal is
         similar to.
-    '''
+    """
 
     n = A.shape[1]
     rho = np.zeros((n, n))
@@ -267,8 +267,8 @@ def covariance(A, printSingular=False, tol=0.9, skipSignals=[]):
     return rho, occurences
 
 def maximizeUncorrelatedSignals(A, tol=0.9):
-    '''
-    Maximize number of signals such that all are uncorrelated 
+    """
+    Maximize number of signals such that all are uncorrelated
     according to the tolerance.
 
     A : array, or list of arrays
@@ -276,7 +276,7 @@ def maximizeUncorrelatedSignals(A, tol=0.9):
         If list, n must be equal on all arrays
     tol : float, optional
         Tolerance for covariance
-    '''
+    """
 
     # Initialize
     if type(A) is np.ndarray:
@@ -296,8 +296,8 @@ def maximizeUncorrelatedSignals(A, tol=0.9):
 
     skipSignals = []
     for j in range(N, 1):
-        if operation == 0:  
-            rho, occurences = covariance(A, printSingular=False, tol=tol, skipSignals=skipSignals) 
+        if operation == 0:
+            rho, occurences = covariance(A, printSingular=False, tol=tol, skipSignals=skipSignals)
             n = np.sum(occurences == 0.0)
             if n > nMax:
                 nMax = n
@@ -306,15 +306,15 @@ def maximizeUncorrelatedSignals(A, tol=0.9):
             temp = np.argsort(occurences)
 
             I[temp[-1]] = False
-            
-            
+
+
         elif operation == 1:
             rho = np.empty((j, j))
             for k in range(0, len(A)):
                 rhoTemp, occurencesTemp = covariance(A, printSingular=False, tol=tol)
                 rho += rhoTemp
             rho /= len(A)
-            occurences = _checkOccurences(rho, tol, printOccurences=False)        
+            occurences = _checkOccurences(rho, tol, printOccurences=False)
             n = np.sum(occurences == 0.0)
             if n > nMax:
                 nMax = n
@@ -322,26 +322,26 @@ def maximizeUncorrelatedSignals(A, tol=0.9):
 
 @njit(cache=True)
 def _spearmanWorker(temp1, temp2):
-    '''
+    """
     Calculate the spearman coefficient
-    '''
+    """
     return np.sum((temp1)*(temp2)) / np.sqrt(np.sum((temp1)**2)*np.sum((temp2)**2))
 
 def spearman(x1):
-    '''
+    """
     Computes the spearman coefficient of input x1 np.array
-    Assumes the comparison vector is linearly increasing. 
+    Assumes the comparison vector is linearly increasing.
 
     Parameters
     ----------
     x1 : float 1D array
         The signal to calculate Spearman coefficient of
-    
+
     Returns
     -------
     spearman : float
         Spearman coefficient
-    '''
+    """
 
     x1rankMean = float(x1.size - 1)/2.0
     temp1 = np.argsort(x1)[::-1] - x1rankMean
@@ -351,9 +351,9 @@ def spearman(x1):
 
 @njit(cache=True)
 def _percentileWorker(x, y, yp):
-    '''
+    """
     Calculates the percentile
-    '''
+    """
     if yp <= y[0]:
         return x[0]
     x1 = x[0]
@@ -367,9 +367,9 @@ def _percentileWorker(x, y, yp):
         y1 = y2
         x1 = x2
     return xp
-    
+
 def percentile(v, p, w=None):
-    '''
+    """
     Gets the p percentile of a PDF with weights w and values v
     0.0 <= p <= w.sum
     if w is None, w.sum == 1.0
@@ -387,7 +387,7 @@ def percentile(v, p, w=None):
     -------
     percentile : float
         The percentile
-    '''
+    """
     assert 0.0 <= p <= 1.0
     if w is None:
         w = np.ones(v.size)/v.size

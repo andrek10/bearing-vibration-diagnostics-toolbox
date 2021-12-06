@@ -24,6 +24,8 @@ project = 'Bearing Vibration Diagnostics Toolbox'
 copyright = '2021, Andreas Klausen'
 author = 'Andreas Klausen'
 
+html_favicon = 'bearing.svg'
+
 # The short X.Y version
 version = '1.0'
 # The full version, including alpha/beta/rc tags
@@ -40,12 +42,18 @@ release = '1.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.napoleon',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.coverage',
-    'sphinx.ext.githubpages',
-    'sphinx_rtd_theme'
+    "sphinx.ext.napoleon",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.coverage",
+    "sphinx.ext.githubpages",
+    "sphinx_rtd_theme",
+    "sphinx_autodoc_typehints",
+    "numpydoc",
+    "sphinxcontrib.bibtex"
 ]
+
+bibtex_bibfiles = ['publications.bib', 'datasets.bib', 'thesis.bib']
+bibtex_default_style = 'unsrt'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

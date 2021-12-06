@@ -1,3 +1,7 @@
+"""
+Different features that can be calculated with the vibration signal
+"""
+
 from math import log
 
 import matplotlib.pyplot as plt
@@ -22,10 +26,10 @@ def rms(y):
     RMS : float
         RMS
     """
-    
+
     rms = np.sqrt(np.sum(y**2)/y.size)
     return rms
-    
+
 def kurtosis(x):
     """
     Get kurtosis value
@@ -40,7 +44,7 @@ def kurtosis(x):
     K : float
         Kurtosis
     """
-    
+
     x2 = np.abs(x - np.mean(x))**2.0
     E = np.mean(x2)
     K = np.mean(x2**2.0)/E**2.0
@@ -61,7 +65,7 @@ def standardmoment(x, k):
     SM : float
         Standard moment of choice
     """
-    
+
     xk = (x - np.mean(x))**k
     x2 = (x - np.mean(x))**2
     SM = np.mean(xk)/np.mean(x2)**(float(k)/2.0)
@@ -82,7 +86,7 @@ def absoluteMean(x):
 def peakToPeak(x):
     """
     Peak-to-peak of signal
-    
+
     Parameters
     ----------
     x : float 1D array
@@ -94,28 +98,28 @@ def peakToPeak(x):
 def squareMeanRoot(x):
     """
     Square mean root of signal
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
     """
-    
+
     return np.sum(np.sqrt(np.abs(x)))**2
 
 def waveformLength(x):
     """
     Waveform length of signal
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
-    
+
     Taken from paper:
-        Nayana, B. R., and P. Geethanjali. 
-        "Analysis of Statistical Time-Domain Features Effectiveness 
-        in Identification of Bearing Faults From Vibration Signal." 
+        Nayana, B. R., and P. Geethanjali.
+        "Analysis of Statistical Time-Domain Features Effectiveness
+        in Identification of Bearing Faults From Vibration Signal."
         IEEE Sensors Journal 17.17 (2017): 5618-5625.
     """
 
@@ -124,16 +128,16 @@ def waveformLength(x):
 def willsonAmplitude(x, epsilon=0.5):
     """
     Willson amplitude
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
-    
+
     Taken from paper:
-        Nayana, B. R., and P. Geethanjali. 
-        "Analysis of Statistical Time-Domain Features Effectiveness 
-        in Identification of Bearing Faults From Vibration Signal." 
+        Nayana, B. R., and P. Geethanjali.
+        "Analysis of Statistical Time-Domain Features Effectiveness
+        in Identification of Bearing Faults From Vibration Signal."
         IEEE Sensors Journal 17.17 (2017): 5618-5625.
     """
 
@@ -142,17 +146,17 @@ def willsonAmplitude(x, epsilon=0.5):
 def zeroCrossing(x, epsilon=0.5):
     """
     Zero crossing og signal
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
     epsilon : float, optional
-    
+
     Taken from paper:
-        Nayana, B. R., and P. Geethanjali. 
-        "Analysis of Statistical Time-Domain Features Effectiveness 
-        in Identification of Bearing Faults From Vibration Signal." 
+        Nayana, B. R., and P. Geethanjali.
+        "Analysis of Statistical Time-Domain Features Effectiveness
+        in Identification of Bearing Faults From Vibration Signal."
         IEEE Sensors Journal 17.17 (2017): 5618-5625.
     """
 
@@ -164,17 +168,17 @@ def zeroCrossing(x, epsilon=0.5):
 def slopeSignChange(x, epsilon=0.5):
     """
     Slope sign change
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
     epsilon : float, optional
-    
+
     Taken from paper:
-        Nayana, B. R., and P. Geethanjali. 
-        "Analysis of Statistical Time-Domain Features Effectiveness 
-        in Identification of Bearing Faults From Vibration Signal." 
+        Nayana, B. R., and P. Geethanjali.
+        "Analysis of Statistical Time-Domain Features Effectiveness
+        in Identification of Bearing Faults From Vibration Signal."
         IEEE Sensors Journal 17.17 (2017): 5618-5625.
     """
 
@@ -186,79 +190,79 @@ def slopeSignChange(x, epsilon=0.5):
 def shapeFactor(x):
     """
     Shape factor
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
     """
-    
+
     return rms(x)/absoluteMean(x)
 
 def crestFactor(x):
     """
     Crest factor
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
     """
-    
+
     return np.max(x)/rms(x)
 
 def impulseFactor(x):
     """
     Impulse factor
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
     """
-    
+
     return np.max(x)/absoluteMean(x)
 
 def clearanceFactor(x):
     """
     Clearance factor
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
     """
-    
+
     return np.max(x)/squareMeanRoot(x)
 
 def skewnessFactor(x):
     """
     Skewness factor
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
     """
-    
+
     return standardmoment(x, 3)/rms(x)**3
 
 def kurtosisFactor(x):
     """
     Kurtosis factor
-    
+
     Parameters
     ----------
     x : float 1D array
         Signal
     """
-    
+
     return standardmoment(x, 4)/rms(x)**4
 
 def rootMeanSquareFrequency(f, Y):
     """
     Root mean square frequency
-    
+
     Parameters
     ----------
     f : float 1D array
@@ -266,13 +270,13 @@ def rootMeanSquareFrequency(f, Y):
     Y : float 1D array
         Amplitude of FFT
     """
-    
+
     return ( np.sum(f**2*Y)/np.sum(Y) )**0.5
 
 def frequencyCenter(f, Y):
     """
     Frequency center of spectrum
-    
+
     Parameters
     ----------
     f : float 1D array
@@ -280,7 +284,7 @@ def frequencyCenter(f, Y):
     Y : float 1D array
         Amplitude of FFT
     """
-    
+
     return np.sum(f*Y)/np.sum(Y)
 
 @njit(cache=True)
@@ -322,8 +326,8 @@ def approximateEntropy(U, N=1000, m=2, r=None):
 
     https://en.wikipedia.org/wiki/Approximate_entropy
     Default values taken from:
-    Yan, Ruqiang, and Robert X. Gao. 
-    "Approximate entropy as a diagnostic tool for machine health monitoring." 
+    Yan, Ruqiang, and Robert X. Gao.
+    "Approximate entropy as a diagnostic tool for machine health monitoring."
     Mechanical Systems and Signal Processing 21.2 (2007): 824-839.
     """
 
@@ -334,7 +338,7 @@ def approximateEntropy(U, N=1000, m=2, r=None):
     return abs(temp1 - temp2)
 
 def SDofIHC(x):
-    '''
+    """
     Standard deviation of inverse hyperbolic cosine
 
     Parameters
@@ -342,14 +346,14 @@ def SDofIHC(x):
     x : float 1D array
         Signal
 
-    Taken from paper 
+    Taken from paper
     A Model-Based Method for Remaining Useful Life Prediction of Machinery
     Yaguo Lei et al.
-    '''
+    """
     return np.std(np.log(x + np.sqrt(x**2 - 1)))
 
 def SDofIHS(x):
-    '''
+    """
     Standard deviation of inverse hyperbolic sine
 
     Parameters
@@ -357,14 +361,14 @@ def SDofIHS(x):
     x : float 1D array
         Signal
 
-    Taken from paper 
+    Taken from paper
     A Model-Based Method for Remaining Useful Life Prediction of Machinery
     Yaguo Lei et al.
-    '''
+    """
     return np.std(np.log(x + np.sqrt(x**2 + 1)))
 
 def medianFrequency(Y, df):
-    '''
+    """
     Median frequency of a spectrum
 
     Parameters
@@ -373,13 +377,13 @@ def medianFrequency(Y, df):
         Spectrum aplitude
     df : float
         Frequency spacing between bins
-    '''
+    """
 
     cumsum = np.cumsum(Y)
     return np.argmin(np.abs(cumsum - 0.5*cumsum[-1]))*df
 
 def myoPulsePercentage(x, eps=5.0):
-    '''
+    """
     Myo pulse percentage
     Sum of all impulses greater than a threshold eps
 
@@ -389,24 +393,24 @@ def myoPulsePercentage(x, eps=5.0):
         Signal
     eps : float, opional
         Threshold
-    '''
+    """
 
     return np.sum(np.greater(np.abs(x), eps))
 
 def LOG(x):
-    '''
+    """
     Exponential of the mean absolute logarithm
 
     Parameters
     ----------
     x : float 1D array
         Signal
-    '''
+    """
 
-    return np.exp(np.mean(np.log(np.abs(x))))  
+    return np.exp(np.mean(np.log(np.abs(x))))
 
 def bearingEnergy(Y, df, X, bearing):
-    '''
+    """
     Energy within band of typical characteristic frequencies
 
     Parameters
@@ -423,7 +427,7 @@ def bearingEnergy(Y, df, X, bearing):
         bearing[1] - 2x roller spin frequency
         bearing[2] - Cage frequency
         bearing[3] - Outer race frequency
-    '''
+    """
 
     lowerFrequency = np.min([bearing[0], bearing[1], bearing[3]])*X*0.95
     upperFrequency = np.max([bearing[0], bearing[1], bearing[3]])*X*1.05
@@ -432,7 +436,7 @@ def bearingEnergy(Y, df, X, bearing):
     return np.sum(Y[i1:i2+1])
 
 def snr(r, Fs, ma=0.05, mb=0.5, cb=3, mc=0.05, md=0.6, c=2, c_ech=0.05, J_min=3, toler=0.1):
-    '''Estimates the Signal-to-noise ratio.
+    """Estimates the Signal-to-noise ratio.
 
     Based on "About periodicity and signal to noise ratio - The
     strength of the autocorrelation function."
@@ -450,7 +454,7 @@ def snr(r, Fs, ma=0.05, mb=0.5, cb=3, mc=0.05, md=0.6, c=2, c_ech=0.05, J_min=3,
         Lag support end, percentage of r.size
     cb : int
         Tolerance factor
-    mc : float 
+    mc : float
         Lag support start, percentage of r.size
     md : float
         Lag support end, percentage of r.size
@@ -481,8 +485,8 @@ def snr(r, Fs, ma=0.05, mb=0.5, cb=3, mc=0.05, md=0.6, c=2, c_ech=0.05, J_min=3,
             Confidence value ratio
         3 : float
             Estimated fundamental frequency
-    '''
-        
+    """
+
     def autocorr(r):
         d = r.size
         Rr = fftwconvolve(np.flipud(r), r, 'full')
@@ -563,7 +567,7 @@ def snr(r, Fs, ma=0.05, mb=0.5, cb=3, mc=0.05, md=0.6, c=2, c_ech=0.05, J_min=3,
     return SNR_hat, flags
 
 def maxToMinPowerDensityDrop(Y, df, X, bearing):
-    '''
+    """
     Maximum to minimum power density drop
 
     Parameters
@@ -580,7 +584,7 @@ def maxToMinPowerDensityDrop(Y, df, X, bearing):
         bearing[1] - 2x roller spin frequency
         bearing[2] - Cage frequency
         bearing[3] - Outer race frequency
-    '''
+    """
 
     lowerFrequency = np.min([bearing[0], bearing[1], bearing[3]])*X*0.95
     upperFrequency = np.max([bearing[0], bearing[1], bearing[3]])*X*1.05
