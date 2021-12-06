@@ -4,7 +4,7 @@ Getting Started
 Installation
 ------------
 
-There are two ways to install this module.
+There are (atleast) two ways to install this module.
 
 1. Install using pip in your current Python environment
 2. Download the repository and put `pyvib` folder in your project
