@@ -1,10 +1,11 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='pyvib',
     version='1.0.0',
     author='Andreas Klausen',
     author_email='andreas.klausen@motiontech.no',
+    packages=find_packages(),
     entry_points={
     },
     scripts=[
