@@ -31,7 +31,7 @@ Navigate to the `pyvib` folder and run the following command:
 
 .. code-block::
 
-    pip install -r .
+    pip install -r requirements.txt
 
 Example
 -------
