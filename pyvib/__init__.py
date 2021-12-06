@@ -3,7 +3,7 @@ import sys
 
 from . import acoustics as acoustics
 from . import bearing as bearing
-from . import diagnose as diagnose,
+from . import diagnose as diagnose
 from . import fft as fft
 from . import filter as filter
 from . import linalg as linalg
