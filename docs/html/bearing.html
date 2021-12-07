@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bearing functions &mdash; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/bearing.svg"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plotting funtions" href="plt.html" />
+    <link rel="prev" title="Signal features" href="features.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bearing Vibration Diagnostics Toolbox
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft.html">Fourier transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Signal features</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bearing functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plt.html">Plotting funtions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnose.html">Diagnose functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Statistical functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="particlefilter.html">Particle filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acoustics.html">Acoustics functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bearing Vibration Diagnostics Toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Bearing functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/bearing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-pyvib.bearing">
+<span id="bearing-functions"></span><h1>Bearing functions<a class="headerlink" href="#module-pyvib.bearing" title="Permalink to this headline"></a></h1>
+<p>Functions related to i.e. bearing lifetime and geometry</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.bearing.bearingcharfrequencies">
+<span class="sig-prename descclassname"><span class="pre">pyvib.bearing.</span></span><span class="sig-name descname"><span class="pre">bearingcharfrequencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.bearing.bearingcharfrequencies" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate bearing characteristic orders from dimensions.
+Equations taken from:
+Rolling element bearing diagnostics-A tutorial by R Randall and J Antoni</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>D</strong><span class="classifier">float</span></dt><dd><p>Pitch diameter</p>
+</dd>
+<dt><strong>d</strong><span class="classifier">float</span></dt><dd><p>roller diameter</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Number of rollers</p>
+</dd>
+<dt><strong>theta</strong><span class="classifier">float, optional</span></dt><dd><p>Contact angle in degrees</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>bearing</strong><span class="classifier">array_like</span></dt><dd><p>Bearing fault orders (inner, roller, cage, outer)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvib.bearing.bearinglifetimemodel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyvib.bearing.</span></span><span class="sig-name descname"><span class="pre">bearinglifetimemodel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.bearing.bearinglifetimemodel" title="Permalink to this definition"></a></dt>
+<dd><p>Makes a Weibull lifetime distribution for a bearing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>L10</strong><span class="classifier">float</span></dt><dd><p>Lifetime of bearing in million revolutions</p>
+</dd>
+<dt><strong>.. method:: life:</strong></dt><dd><p>Get lifetime in million revs based on probability of survival</p>
+</dd>
+<dt><strong>.. method:: survival:</strong></dt><dd><p>Get survival probability based on number of revs</p>
+<dl class="field-list simple">
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bearing</strong> (<em>class object</em>)</p></li>
+<li><p><em>Bearing object</em></p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvib.bearing.bearinglifetimemodel.life" title="pyvib.bearing.bearinglifetimemodel.life"><code class="xref py py-obj docutils literal notranslate"><span class="pre">life</span></code></a>(S)</p></td>
+<td><p>Get lifetime in million revs based on probability of survival</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvib.bearing.bearinglifetimemodel.survival" title="pyvib.bearing.bearinglifetimemodel.survival"><code class="xref py py-obj docutils literal notranslate"><span class="pre">survival</span></code></a>(L)</p></td>
+<td><p>Get survival probability based on number of revs</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.bearing.bearinglifetimemodel.life">
+<span class="sig-name descname"><span class="pre">life</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.bearing.bearinglifetimemodel.life" title="Permalink to this definition"></a></dt>
+<dd><p>Get lifetime in million revs based on probability of survival</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>S</strong> (<em>float</em>) – Probability of survival. &lt;0.0, 1.0&gt;</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>L</strong> – Lifetime in million revolutions</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.bearing.bearinglifetimemodel.survival">
+<span class="sig-name descname"><span class="pre">survival</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.bearing.bearinglifetimemodel.survival" title="Permalink to this definition"></a></dt>
+<dd><p>Get survival probability based on number of revs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>L</strong> (<em>float</em>) – Lifetime in million revs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>S</strong> – Survival probability &lt;0.0, 1.0&gt;</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.bearing.bearingsimulation">
+<span class="sig-prename descclassname"><span class="pre">pyvib.bearing.</span></span><span class="sig-name descname"><span class="pre">bearingsimulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10400.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taustd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initpause</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.bearing.bearingsimulation" title="Permalink to this definition"></a></dt>
+<dd><p>Make a simulation of a bearing with an outer race fault</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>t</strong><span class="classifier">float 1D array</span></dt><dd><p>Time signal</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">float 1D array</span></dt><dd><p>Shaft angle position in number of rounds</p>
+</dd>
+<dt><strong>fo</strong><span class="classifier">float</span></dt><dd><p>Outer race fault frequency</p>
+</dd>
+<dt><strong>beta</strong><span class="classifier">float, optional</span></dt><dd><p>The damping ratio</p>
+</dd>
+<dt><strong>omr</strong><span class="classifier">float, optional</span></dt><dd><p>Resonance frequency in Hz</p>
+</dd>
+<dt><strong>taustd</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation change in percentage between each impact</p>
+</dd>
+<dt><strong>initpause</strong><span class="classifier">float, optional</span></dt><dd><p>Initial pause in rounds before first impact</p>
+</dd>
+<dt><strong>amp</strong><span class="classifier">float or function, optional</span></dt><dd><p>The impact amplitude vibration:
+- If float, the same amplitude all the time
+- If function, the instantaneous velocity is used as input and</p>
+<blockquote>
+<div><p>the amplitude is returned</p>
+</div></blockquote>
+</dd>
+<dt><strong>debug</strong><span class="classifier">boolean, optional</span></dt><dd><p>Whether debug information is returned
+If true, the percentage finished is printed</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int or None, optional</span></dt><dd><p>Choose a seed number for numpy, must be positive.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">float 1D array</span></dt><dd><p>The bearing vibration</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.bearing.bearingsimulation_ahc">
+<span class="sig-prename descclassname"><span class="pre">pyvib.bearing.</span></span><span class="sig-name descname"><span class="pre">bearingsimulation_ahc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3543.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initpause</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.bearing.bearingsimulation_ahc" title="Permalink to this definition"></a></dt>
+<dd><p>Make a simulation of a bearing with an outer race fault
+where the shaft speed can pass 0 rpm speed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">float 1D array</span></dt><dd><p>Time signal</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">float 1D array</span></dt><dd><p>Shaft angle position in number of rounds</p>
+</dd>
+<dt><strong>fo</strong><span class="classifier">float</span></dt><dd><p>Outer race fault frequency</p>
+</dd>
+<dt><strong>amp</strong><span class="classifier">function(v)</span></dt><dd><p>Amplitude function with shaft velocity as input.
+Must return scalar amplitude only</p>
+</dd>
+<dt><strong>beta</strong><span class="classifier">float, optional</span></dt><dd><p>The damping ratio</p>
+</dd>
+<dt><strong>omr</strong><span class="classifier">float, optional</span></dt><dd><p>Resonance frequency in Hz</p>
+</dd>
+<dt><strong>initpause</strong><span class="classifier">float, optional</span></dt><dd><p>Initial pause in fault-periods before first impact</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">float 1D array</span></dt><dd><p>The bearing vibration</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="features.html" class="btn btn-neutral float-left" title="Signal features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plt.html" class="btn btn-neutral float-right" title="Plotting funtions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Andreas Klausen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

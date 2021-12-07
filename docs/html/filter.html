@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filters &mdash; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/bearing.svg"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Signal features" href="features.html" />
+    <link rel="prev" title="Fourier transforms" href="fft.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bearing Vibration Diagnostics Toolbox
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft.html">Fourier transforms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Signal features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bearing.html">Bearing functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plt.html">Plotting funtions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnose.html">Diagnose functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Statistical functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="particlefilter.html">Particle filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acoustics.html">Acoustics functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bearing Vibration Diagnostics Toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Filters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/filter.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-pyvib.filter">
+<span id="filters"></span><h1>Filters<a class="headerlink" href="#module-pyvib.filter" title="Permalink to this headline"></a></h1>
+<p>Filer design</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.filter.blinddeconvolution">
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">blinddeconvolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">part</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxIter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopCrit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.blinddeconvolution" title="Permalink to this definition"></a></dt>
+<dd><p>Iteratively identifies a filter g that deconvolves the filter h
+originally applied to z to return the deconvolved signal x.
+The iterator tries to maximize the kurtosis (impulsivity) of the
+deconvolved signal.
+The deconvolution is afterwards performed using:
+x = pyvib.signal.fftwconvolve(z, gNew, ‘valid’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<em>float 1D array</em>) – Signal to deconvolve</p></li>
+<li><p><strong>L</strong> (<em>int</em>) – Length of filter</p></li>
+<li><p><strong>part</strong> (<em>float</em><em>, </em><em>optional</em>) – Percentage of the data to train the filter on.
+Must be within &lt;0, 1&gt;</p></li>
+<li><p><strong>float</strong> (<em>k -</em>) – Exponent of the objective. 4 gives kurtosis</p></li>
+<li><p><strong>optional</strong> – Exponent of the objective. 4 gives kurtosis</p></li>
+<li><p><strong>maxIter</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of iterations to run</p></li>
+<li><p><strong>maxMu</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum training coefficient</p></li>
+<li><p><strong>stopCrit</strong> (<em>float</em><em>, </em><em>optional</em>) – Stopping criterion</p></li>
+<li><p><strong>debug</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Print progression if true</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>gNew</strong> – Filter kernel that deconvolves the signal</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float 1D array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.filter.cpw">
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">cpw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.cpw" title="Permalink to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Removes synchronous parts of a signal using Cepstrum Pre-Whitening</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">float 1D array</span></dt><dd><p>Signal</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>xPW</strong><span class="classifier">float 1D array</span></dt><dd><p>Whitened signal</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.filter.filterbank_compose">
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">filterbank_compose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xbank</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsizes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterbank_compose" title="Permalink to this definition"></a></dt>
+<dd><p>Recompose the filter bank to a single signal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xbank</strong> (<em>float 1D array</em>) – The filterbank</p></li>
+<li><p><strong>f0</strong> (<em>float 1D arrays</em>) – The filter kernels</p></li>
+<li><p><strong>f1</strong> (<em>float 1D arrays</em>) – The filter kernels</p></li>
+<li><p><strong>xsizes</strong> (<em>list of list of ints</em>) – The sizes of signals before decomposing</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>x_hat</strong> (<em>float array</em>) – The recomposed signal. Should be close to the original
+signal x after applying the lag</p></li>
+<li><p><strong>lag</strong> (<em>int</em>) – The lag of the recomposed signal
+Should ideally use x_hat[lag:-lag] after recomposition
+x_hat[lag:-lag] approximates x[0:-lag*2]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.filter.filterdesign">
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">filterdesign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Yh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.filterdesign" title="Permalink to this definition"></a></dt>
+<dd><p>Design a FIR filter that matches a frequency response</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Yh</strong> (<em>float 1D array</em>) – The amplitude specrum to match</p></li>
+<li><p><strong>M</strong> (<em>int</em>) – Number of coefficients to use in the filter</p></li>
+<li><p><strong>plot</strong> (<em>boolean</em><em>, </em><em>optional</em>) – Whether the resulting filter should be plotted</p></li>
+<li><p><strong>Resturns</strong> – </p></li>
+<li><p><strong>--------</strong> – </p></li>
+<li><p><strong>h</strong> (<em>float 1D array</em>) – The designed FIR filter kernel</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.filter.get_decimatelist">
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">get_decimatelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desireddecimation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxdec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_decimatelist" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a decimation list for using the decimate function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>desireddecimation</strong> (<em>int</em>) – Desired decimation factor in total
+Going from a sample frequency of 50 kHz to 10 kHz is a factor of 5</p></li>
+<li><p><strong>maxdec</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum decimation per iteration
+Defaults to 12</p></li>
+<li><p><strong>direction</strong> (<em>int</em><em>, </em><em>optional</em>) – Step to make if a decimation factor is not suitable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>decimatelist</strong> – Decimation factors to follow per decimation iteration.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">decimate</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.filter.get_filterbankfilters">
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">get_filterbankfilters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_filterbankfilters" title="Permalink to this definition"></a></dt>
+<dd><p>Make filters for filterbank decomposition and recomposition
+These are even order FIR filters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> (<em>int</em>) – The filter length. Must be even number</p></li>
+<li><p><strong>fc</strong> (<em>float</em>) – Normalized cutoff frequency &lt;0.0, 0.5&gt;</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>f0, f1, h0, h1</strong> – The filter kernels</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>arrays of float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.filter.get_filterbankfilters_kurtogram">
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">get_filterbankfilters_kurtogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.get_filterbankfilters_kurtogram" title="Permalink to this definition"></a></dt>
+<dd><p>Acquire the filterbank filters used in:
+Antoni, Jerome. “Fast computation of the kurtogram for the detection of transient faults.”
+Mechanical Systems and Signal Processing 21.1 (2007): 108-124.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>N</strong> (<em>int</em>) – Number of filterbank coefficients</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>h</strong> (<em>float 1D array</em>) – Lowpass filter</p></li>
+<li><p><strong>g</strong> (<em>float 1D array</em>) – Highpass filter</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyvib.filter.waveletfilter">
+<span class="sig-prename descclassname"><span class="pre">pyvib.filter.</span></span><span class="sig-name descname"><span class="pre">waveletfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.filter.waveletfilter" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs the frequency transformed wavelet filter. Can be used to
+filter a frequency transformed signal by taking Y*Ksi.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f0</strong> (<em>float</em>) – The center frequency for the bandpass filter in Hz</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – The width of the filter in Hz</p></li>
+<li><p><strong>Fs</strong> (<em>float</em>) – The sampling frequency of the signal in Hz</p></li>
+<li><p><strong>N</strong> (<em>int</em>) – The number of samples in the signal in Hz</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Ksi</strong> – Filter in the frequency domain.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float 1D array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fft.html" class="btn btn-neutral float-left" title="Fourier transforms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="features.html" class="btn btn-neutral float-right" title="Signal features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Andreas Klausen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

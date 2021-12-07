@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Particle filter &mdash; Bearing Vibration Diagnostics Toolbox 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/bearing.svg"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Acoustics functions" href="acoustics.html" />
+    <link rel="prev" title="Statistical functions" href="stats.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bearing Vibration Diagnostics Toolbox
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fft.html">Fourier transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Signal features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bearing.html">Bearing functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plt.html">Plotting funtions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnose.html">Diagnose functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Statistical functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Particle filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acoustics.html">Acoustics functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bearing Vibration Diagnostics Toolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Particle filter</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/particlefilter.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-pyvib.ParticleFilter">
+<span id="particle-filter"></span><h1>Particle filter<a class="headerlink" href="#module-pyvib.ParticleFilter" title="Permalink to this headline"></a></h1>
+<p>Particle filter class</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyvib.ParticleFilter.</span></span><span class="sig-name descname"><span class="pre">ParticleFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nStates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nParameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measuredStates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resampleAlways</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resampleDebug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter" title="Permalink to this definition"></a></dt>
+<dd><p>A particle filter class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> (<em>int</em>) – Number of particles</p></li>
+<li><p><strong>R</strong> (<em>float</em><em> or </em><em>array_like</em>) – Variance of measured states
+len(R) == len(measuredStates)</p></li>
+<li><p><strong>Q</strong> (<em>float</em><em> or </em><em>array_like</em>) – Variance of actuation error
+Part of model</p></li>
+<li><p><strong>model</strong> (<em>function</em><em>(</em><em>u</em><em>, </em><em>states</em><em>, </em><em>parameters</em><em>, </em><em>Q</em><em>)</em>) – <p>Model that generates next step of states
+using previous states, parameters and Q
+statesDerivative can be used as a placeholder for the derivative
+Example:</p>
+<dl class="simple">
+<dt>def model(u, states, parameters, statesDerivative, Q):</dt><dd><p>m = parameters[:, 0]
+k = parameters[:, 1]
+c = parameters[:, 2]
+dt = 1.0
+statesDerivative[:, 0] = states[:, 1]
+statesDerivative[:, 1] = 1.0/m*(-k*states[:, 0] - c*states[:, 1] + (u + randn(states.shape[0])*np.sqrt(Q))
+states[:, 0] += statesDerivative[:, 0]*dt
+states[:, 1] += statesDerivative[:, 1]*dt</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>nStates</strong> (<em>int</em>) – Number of states in the system</p></li>
+<li><p><strong>nParameters</strong> (<em>int</em>) – Number of parameters in the system</p></li>
+<li><p><strong>measuredStates</strong> (<em>int</em><em> or </em><em>array_like</em>) – Which state number are measured
+Could be a single number or multiple in a list.
+Observation (z) must have the same length.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.createGaussianParticles" title="pyvib.ParticleFilter.ParticleFilter.createGaussianParticles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createGaussianParticles</span></code></a>(mean, var)</p></td>
+<td><p>Create gaussian distributed particles</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.createUniformParticles" title="pyvib.ParticleFilter.ParticleFilter.createUniformParticles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createUniformParticles</span></code></a>(ranges)</p></td>
+<td><p>Create uniformly distributed particles</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.estimate" title="pyvib.ParticleFilter.ParticleFilter.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>()</p></td>
+<td><p>Estimates true value and variance of states and parameters Results are saved in ParticleFilter.meanList and -.varList</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.getMeanAndVariance" title="pyvib.ParticleFilter.ParticleFilter.getMeanAndVariance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMeanAndVariance</span></code></a>()</p></td>
+<td><p>Get meanlist and varlist Mean and var</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.getPercentile" title="pyvib.ParticleFilter.ParticleFilter.getPercentile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPercentile</span></code></a>(per)</p></td>
+<td><p>Get the percentile of values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.get_parameters" title="pyvib.ParticleFilter.ParticleFilter.get_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_parameters</span></code></a>()</p></td>
+<td><p>Return the parameters of particles</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.get_states" title="pyvib.ParticleFilter.ParticleFilter.get_states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_states</span></code></a>()</p></td>
+<td><p>Return the states of particles</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.plotHistogram" title="pyvib.ParticleFilter.ParticleFilter.plotHistogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotHistogram</span></code></a>(column)</p></td>
+<td><p>Plot histogram of a state or parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.predict" title="pyvib.ParticleFilter.ParticleFilter.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(u)</p></td>
+<td><p>Predict state of next time step using control input</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.resample" title="pyvib.ParticleFilter.ParticleFilter.resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resample</span></code></a>([thrScale])</p></td>
+<td><p>Resamples particles IF necessary</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.simulateTrend" title="pyvib.ParticleFilter.ParticleFilter.simulateTrend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simulateTrend</span></code></a>(iterations, u[, percs])</p></td>
+<td><p>Simulate the trend moving forward using the particles parameters and state</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyvib.ParticleFilter.ParticleFilter.update" title="pyvib.ParticleFilter.ParticleFilter.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(z[, debug])</p></td>
+<td><p>Update the weights based on measurements and observation noise</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.createGaussianParticles">
+<span class="sig-name descname"><span class="pre">createGaussianParticles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.createGaussianParticles" title="Permalink to this definition"></a></dt>
+<dd><p>Create gaussian distributed particles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mean</strong> (<em>array_like</em>) – Mean value of gaussian distributed guess
+len(mean) = nStates + nParameters</p></li>
+<li><p><strong>std</strong> (<em>array_like</em>) – Variation of gaussian distributed guess
+len(var) = nStates + nParameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.createUniformParticles">
+<span class="sig-name descname"><span class="pre">createUniformParticles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ranges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.createUniformParticles" title="Permalink to this definition"></a></dt>
+<dd><p>Create uniformly distributed particles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ranges</strong> (<em>2D numpy.ndarray</em>) – The uniform range of starting guess
+Shaped as [nStates + nParamteres, 2]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.estimate">
+<span class="sig-name descname"><span class="pre">estimate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.estimate" title="Permalink to this definition"></a></dt>
+<dd><p>Estimates true value and variance of states and parameters
+Results are saved in ParticleFilter.meanList and -.varList</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.getMeanAndVariance">
+<span class="sig-name descname"><span class="pre">getMeanAndVariance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.getMeanAndVariance" title="Permalink to this definition"></a></dt>
+<dd><p>Get meanlist and varlist
+Mean and var</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>meanList</strong> (<em>list of float 1D array</em>) – Mean of each state for each time step</p></li>
+<li><p><strong>varList</strong> (<em>list of float 1D array</em>) – Variance of each state for each time step</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.getPercentile">
+<span class="sig-name descname"><span class="pre">getPercentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">per</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.getPercentile" title="Permalink to this definition"></a></dt>
+<dd><p>Get the percentile of values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>per</strong> (<em>float</em>) – Percentile &lt;0.0, 1.0&gt;</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>percentile</strong> – Percentiles</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float 1D array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.get_parameters">
+<span class="sig-name descname"><span class="pre">get_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.get_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Return the parameters of particles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>parameters</strong> – Parameters of particles</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float 2D array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.get_states">
+<span class="sig-name descname"><span class="pre">get_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.get_states" title="Permalink to this definition"></a></dt>
+<dd><p>Return the states of particles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>states</strong> – States of particles</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float 2D array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.plotHistogram">
+<span class="sig-name descname"><span class="pre">plotHistogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.plotHistogram" title="Permalink to this definition"></a></dt>
+<dd><p>Plot histogram of a state or parameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>column</strong> (<em>int</em>) – Which column of self.particles should be pltted</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict state of next time step using control input</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>u</strong> (<em>float</em><em> or </em><em>array_like</em>) – The control input.
+Must follow rules of model function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.resample">
+<span class="sig-name descname"><span class="pre">resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thrScale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.resample" title="Permalink to this definition"></a></dt>
+<dd><p>Resamples particles IF necessary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>thrScale</strong> (<em>float</em><em>, </em><em>optional</em>) – Thresholds for resampling scaled by number of particles</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.simulateTrend">
+<span class="sig-name descname"><span class="pre">simulateTrend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.5]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.simulateTrend" title="Permalink to this definition"></a></dt>
+<dd><p>Simulate the trend moving forward using the particles parameters and state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iterations</strong> (<em>int</em>) – Number of iterations to simulate</p></li>
+<li><p><strong>u</strong> (<em>Data type defined by user in self.model</em>) – Control input</p></li>
+<li><p><strong>percs</strong> (<em>list of floats</em><em>, </em><em>optional</em>) – Which percentile of parameters and states to simulate as true values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>output</strong> – Simulation results
+output[i, j, k] gives the following
+i - the iteration
+j - the percentile
+k - the state number</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float 3D array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvib.ParticleFilter.ParticleFilter.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvib.ParticleFilter.ParticleFilter.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update the weights based on measurements and observation noise</p>
+<dl class="simple">
+<dt>z<span class="classifier">float or array_like:</span></dt><dd><p>The observation
+len(z) == len(measuredStates)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stats.html" class="btn btn-neutral float-left" title="Statistical functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="acoustics.html" class="btn btn-neutral float-right" title="Acoustics functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Andreas Klausen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
